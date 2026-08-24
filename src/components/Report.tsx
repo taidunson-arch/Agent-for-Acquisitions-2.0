@@ -371,10 +371,152 @@ export default function DealReport({ report: r, onRerun, onPrint }: { report: Re
           </div>
         </Reveal>
 
+        {/* 10 verification & evidence boundary */}
+        {r.verification && (
+          <Reveal delay={0.05}>
+            <div className="pt-8">
+              <SectionTag index="10" title="Verification & Evidence Boundary" />
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Primary sources */}
+                <div className="border border-inkline/15 rounded-md px-4 py-3.5 bg-paper-2/50">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft mb-2">Primary Sources</div>
+                  <ul className="space-y-1.5">
+                    {r.verification.primarySources.map((s, idx) => (
+                      <li key={idx} className="text-[12px] text-ink-soft flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-moss-deep mt-1.5 shrink-0" />
+                        <span><strong className="text-inkline">{s.name}</strong> ({s.type}) · received {s.receivedAt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* External checks */}
+                <div className="border border-inkline/15 rounded-md px-4 py-3.5 bg-paper-2/50">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft mb-2">External Checks</div>
+                  <ul className="space-y-1.5">
+                    {r.verification.externalChecks.map((c, idx) => (
+                      <li key={idx} className="text-[12px] text-ink-soft flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brass mt-1.5 shrink-0" />
+                        <span><strong className="text-inkline">{c.source}</strong> · {c.result}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              {/* Verification items table */}
+              <div className="mt-4 overflow-x-auto">
+                <table className="w-full min-w-[600px] border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-inkline/25">
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2 pr-3">Item</th>
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2 pr-3">Status</th>
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2 pr-3">Source</th>
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2">Note</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {r.verification.items.map((item, idx) => (
+                      <tr key={idx} className="border-b border-inkline/10 hover:bg-paper-2/40 transition-colors">
+                        <td className="py-2 pr-3 text-[12px] font-medium text-inkline">{item.item}</td>
+                        <td className="py-2 pr-3">
+                          <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-mono text-[9px] uppercase tracking-wide ${
+                            item.status === "verified" ? "bg-moss/20 text-moss-deep" :
+                            item.status === "flagged" ? "bg-ember/20 text-ember-deep" :
+                            "bg-inkline/15 text-ink-faint"
+                          }`}>
+                            <span className={`w-1.5 h-1.5 rounded-full ${
+                              item.status === "verified" ? "bg-moss-deep" :
+                              item.status === "flagged" ? "bg-ember-deep" :
+                              "bg-ink-faint"
+                            }`} />
+                            {item.status.replace("_", " ")}
+                          </span>
+                        </td>
+                        <td className="py-2 pr-3 font-mono text-[11px] text-ink-soft">{item.source}</td>
+                        <td className="py-2 font-mono text-[11px] text-ink-soft">{item.note || "—"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {/* Confidence zones */}
+              <div className="mt-4 grid sm:grid-cols-3 gap-3">
+                {r.verification.confidenceZones.map((z, idx) => (
+                  <div key={idx} className={`rounded-md border px-4 py-3 ${
+                    z.zone === "high" ? "border-moss/40 bg-moss/5" :
+                    z.zone === "medium" ? "border-brass/40 bg-brass/5" :
+                    "border-inkline/20 bg-inkline/5"
+                  }`}>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className={`w-2 h-2 rounded-full ${
+                        z.zone === "high" ? "bg-moss-deep" :
+                        z.zone === "medium" ? "bg-brass" :
+                        "bg-ink-faint"
+                      }`} />
+                      <span className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">{z.zone} confidence</span>
+                    </div>
+                    <div className="font-mono text-[10px] text-ink-soft mb-1">{z.fields.join(", ")}</div>
+                    <p className="text-[11px] text-ink-soft leading-relaxed">{z.reason}</p>
+                  </div>
+                ))}
+              </div>
+              {/* Overall confidence */}
+              <div className="mt-3 flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">Overall Model Confidence</span>
+                <span className="font-display text-xl font-bold text-inkline">{(r.verification.overallConfidence * 100).toFixed(0)}%</span>
+              </div>
+            </div>
+          </Reveal>
+        )}
+
+        {/* 11 reconciliation & portfolio context */}
+        {r.reconciliation && r.reconciliation.length > 0 && (
+          <Reveal delay={0.05}>
+            <div className="pt-8">
+              <SectionTag index="11" title="Document Reconciliation" />
+              <div className="border border-inkline/15 rounded-md overflow-hidden">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="border-b-2 border-inkline/25 bg-inkline/5">
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2 pr-3">Field</th>
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2 pr-3">OM</th>
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2 pr-3">Rent Roll</th>
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2 pr-3">T-12</th>
+                      <th className="text-left font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft py-2">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {r.reconciliation.map((check, idx) => (
+                      <tr key={idx} className={`border-b border-inkline/10 ${!check.matches ? "bg-amber-50/60" : ""}`}>
+                        <td className="py-2 pr-3 font-mono text-[11px] font-semibold text-inkline">{check.field}</td>
+                        <td className="py-2 pr-3 font-mono text-[11px] text-ink-soft">{check.omValue}</td>
+                        <td className="py-2 pr-3 font-mono text-[11px] text-ink-soft">{check.rentRollValue}</td>
+                        <td className="py-2 pr-3 font-mono text-[11px] text-ink-soft">{check.t12Value}</td>
+                        <td className="py-2">
+                          {check.matches ? (
+                            <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase text-moss-deep">
+                              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                              Ties
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 font-mono text-[10px] uppercase text-amber-700">
+                              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+                              {check.discrepancy}
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Reveal>
+        )}
+
         {/* footer */}
         <div className="mt-9 pt-4 border-t-2 border-inkline/20 flex flex-wrap items-center justify-between gap-2">
           <span className="font-mono text-[9.5px] tracking-[0.16em] uppercase text-ink-faint">
-            {r.refNo} · ACQ/AGENT 2.0 · Dana inputs D-20260817
+            {r.refNo} · ACQ/AGENT 2.0 · Dana inputs D-20260817 · Buy Box v{r.buyBoxVersion || "N/A"}
           </span>
           <span className="font-mono text-[9.5px] text-ink-faint">Figures are agent estimates — verify before LOI.</span>
         </div>

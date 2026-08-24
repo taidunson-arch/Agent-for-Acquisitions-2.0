@@ -78,6 +78,57 @@ export interface ReportMetrics {
   ltc: number;
 }
 
+export interface VerificationItem {
+  item: string;
+  status: "verified" | "flagged" | "not_performed";
+  source: string;
+  note?: string;
+}
+
+export interface VerificationBlock {
+  primarySources: { name: string; type: string; receivedAt: string }[];
+  externalChecks: { source: string; url?: string; checkedAt: string; result: string }[];
+  items: VerificationItem[];
+  confidenceZones: { zone: "high" | "medium" | "low"; fields: string[]; reason: string }[];
+  overallConfidence: number;
+}
+
+export interface ReconciliationCheck {
+  field: string;
+  omValue: number | string;
+  rentRollValue: number | string;
+  t12Value: number | string;
+  matches: boolean;
+  discrepancy?: string;
+}
+
+export interface SponsorProfile {
+  name: string;
+  trackRecordYears?: number;
+  dealsClosed?: number;
+  avgReturnPct?: number;
+  reliabilityScore?: number; // 0-100
+  notes?: string;
+}
+
+export interface PortfolioConcentration {
+  market: string;
+  assetType: AssetType;
+  currentCount: number;
+  fundLimit?: number;
+  withinLimit: boolean;
+  note?: string;
+}
+
+export interface AssumptionFreshness {
+  assumption: string;
+  modeledValue: number;
+  currentValue: number;
+  variancePct: number;
+  stale: boolean;
+  source?: string;
+}
+
 export interface Report {
   inputs: DealInputs;
   refNo: string;
@@ -94,6 +145,12 @@ export interface Report {
   rehabDeltas: number[];
   comps: Comp[];
   narrative: string[];
+  verification?: VerificationBlock;
+  reconciliation?: ReconciliationCheck[];
+  sponsor?: SponsorProfile;
+  portfolioConcentration?: PortfolioConcentration[];
+  assumptionFreshness?: AssumptionFreshness[];
+  buyBoxVersion?: string;
 }
 
 export type DealStatus = "underwritten" | "negotiation" | "passed" | "intake";

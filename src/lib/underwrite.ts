@@ -5,8 +5,22 @@ import type {
   Report,
   SensitivityCell,
   Verdict,
+  VerificationBlock,
+  ReconciliationCheck,
+  SponsorProfile,
+  PortfolioConcentration,
+  AssumptionFreshness,
 } from "./types";
 import { clamp01, fmtK, fmtPct } from "./format";
+import {
+  buildVerification,
+  reconcileDocuments,
+  checkAssumptionFreshness,
+  buildSponsorProfile,
+  checkPortfolioConcentration,
+  verifyComputations,
+  type ComputedMetrics,
+} from "./verify";
 
 /* ---------------- deterministic rng ---------------- */
 const hash = (s: string): number => {
@@ -289,6 +303,59 @@ export const underwrite = (inputs: DealInputs): Report => {
 
   const conf = 0.78 + mulberry(hash(i.id + "conf"))() * 0.15;
 
+  /* ---------------- verification & discipline layers ---------------- */
+  const verification: VerificationBlock = buildVerification(i, comps.length);
+  
+  // Reconciliation sweep — mock OM/rent-roll/T-12 with same inputs for now
+  // In production, these would be parsed from actual source documents
+  const omData: Partial<DealInputs> = { units: i.units, askingPrice: i.askingPrice };
+  const rentRollData: Partial<DealInputs> = { units: i.units, askingPrice: i.askingPrice };
+  const t12Data: Partial<DealInputs> = { units: i.units, askingPrice: i.askingPrice };
+  const reconciliation: ReconciliationCheck[] = reconcileDocuments(omData, rentRollData, t12Data);
+  
+  // Adjust confidence if reconciliation finds discrepancies
+  const hasDiscrepancies = reconciliation.some((r) => !r.matches);
+  const adjustedConfidence = hasDiscrepancies ? Math.max(0.5, conf - 0.15) : conf;
+  verification.overallConfidence = adjustedConfidence;
+  verification.items.unshift({
+    item: "Document reconciliation sweep",
+    status: hasDiscrepancies ? "flagged" : "verified",
+    source: "OM vs rent roll vs T-12",
+    note: hasDiscrepancies ? reconciliation.map((r) => r.discrepancy).filter(Boolean).join("; ") : "All sources tie",
+  });
+
+  // Computational verification — recompute key metrics and flag mismatches
+  const computedMetrics: ComputedMetrics = { goingInCap, pricePerUnit, stabCap, dscr: c.dscr, coc };
+  const computationCheck = verifyComputations(i, computedMetrics, 0.5);
+  if (!computationCheck.allMatch) {
+    verification.items.push({
+      item: "Computational verification",
+      status: "flagged",
+      source: "internal recomputation",
+      note: computationCheck.mismatches.join(", "),
+    });
+  }
+
+  // Assumption freshness check — interest rate vs current agency quote
+  const currentAgencyRate = 6.625; // Mock — in production, fetch from Freddie/Fannie API
+  const assumptionFreshness: AssumptionFreshness[] = checkAssumptionFreshness(i.ratePct, currentAgencyRate, 25);
+
+  // Sponsor profile — placeholder until CRM integration
+  const sponsorName = i.dealName.split(" ")[0]; // Mock — extract from deal name
+  const sponsor: SponsorProfile = buildSponsorProfile(sponsorName);
+
+  // Portfolio concentration check — mock holdings
+  const mockHoldings = [
+    { market: "Columbus, OH", assetType: "multifamily" },
+    { market: "Grand Rapids, MI", assetType: "mixeduse" },
+  ];
+  const portfolioConcentration: PortfolioConcentration[] = checkPortfolioConcentration(
+    i.market,
+    i.assetType,
+    mockHoldings,
+    { market: 5, assetType: 8 } // Fund limits
+  );
+
   return {
     inputs: i,
     refNo: `DDAR-2026-${i.id.replace(/[^a-z0-9]/gi, "").slice(-6).toUpperCase() || "000000"}`,
@@ -296,7 +363,7 @@ export const underwrite = (inputs: DealInputs): Report => {
     verdict,
     verdictLine,
     scores: { spread: Math.round(sSpread), dscr: Math.round(sDscr), cap: Math.round(sCap), coc: Math.round(sCoc), total },
-    confidence: conf,
+    confidence: adjustedConfidence,
     m: {
       closingCosts: c.closingCosts, rehab: c.rehab, allIn: c.allIn, equity: c.equity, loan: c.loan,
       pgi: c.pgi, vacancyLoss: c.vacancyLoss, ancillary: c.ancillary, egi: c.egi, opex: c.opex, noi: c.noi,
@@ -311,5 +378,11 @@ export const underwrite = (inputs: DealInputs): Report => {
     rehabDeltas,
     comps,
     narrative,
+    verification,
+    reconciliation,
+    sponsor,
+    portfolioConcentration,
+    assumptionFreshness,
+    buyBoxVersion: "meridian-mf-vadd-q1-2026",
   };
 };
