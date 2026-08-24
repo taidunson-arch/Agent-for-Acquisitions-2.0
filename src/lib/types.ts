@@ -129,6 +129,15 @@ export interface AssumptionFreshness {
   source?: string;
 }
 
+export interface ClimateAssessment {
+  overallClimateScore: number; // 0-100 (higher = better)
+  materialRisks: string[];
+  insuranceAvailability: "standard" | "surplus" | "unavailable";
+  premiumTrendPct: number;
+  annualizedClimateCost: number;
+  climateCostPerUnit: number;
+}
+
 export interface Report {
   inputs: DealInputs;
   refNo: string;
@@ -151,6 +160,8 @@ export interface Report {
   portfolioConcentration?: PortfolioConcentration[];
   assumptionFreshness?: AssumptionFreshness[];
   buyBoxVersion?: string;
+  climateAssessment?: ClimateAssessment;
+  screenResult?: { passes: boolean; failures: { field: string; reason: string }[] };
 }
 
 export type DealStatus = "underwritten" | "negotiation" | "passed" | "intake";
