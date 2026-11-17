@@ -1,0 +1,24 @@
+{
+  "id": "12_missing_minor",
+  "title": "Identity fields missing",
+  "tests": "Proceed with [not provided] placeholders",
+  "inputs": {
+    "id": "maple-court",
+    "assetType": "multifamily",
+    "askingPrice": 7000000,
+    "arv": 8500000,
+    "rehabBudget": 900000,
+    "units": 48,
+    "currentRent": 1450,
+    "marketRent": 1600,
+    "vacancyPct": 5,
+    "opexRatioPct": 38,
+    "ancillaryPct": 3,
+    "closingCostPct": 2,
+    "ltvPct": 65,
+    "ratePct": 6.25,
+    "amortYears": 30,
+    "availableEquity": 3300000,
+    "marketCapRate": 6
+  }
+}

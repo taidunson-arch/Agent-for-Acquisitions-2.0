@@ -1,0 +1,14 @@
+{
+  "status": "halt",
+  "engine": "acq2-underwrite v4.1",
+  "blocking": [
+    {
+      "field": "opexAnnual",
+      "reason": "expense ratio 110.13% > 100% of EGI. Correct it, or add \"expense_ratio\" to confirmedOverrides (deal will hard-stop on negative NOI)"
+    }
+  ],
+  "warnings": [
+    "no sourced comps supplied; comp-dependent items (price/unit benchmark, offer anchor) unsupported"
+  ],
+  "message": "Critical Dana Inputs invalid; no calculations run."
+}

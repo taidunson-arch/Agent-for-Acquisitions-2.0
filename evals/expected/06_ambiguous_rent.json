@@ -1,0 +1,14 @@
+{
+  "status": "halt",
+  "engine": "acq2-underwrite v4.1",
+  "blocking": [
+    {
+      "field": "currentRent",
+      "reason": "ambiguous: 17400 looks annual, contract is per unit per month. Confirm"
+    }
+  ],
+  "warnings": [
+    "no sourced comps supplied; comp-dependent items (price/unit benchmark, offer anchor) unsupported"
+  ],
+  "message": "Critical Dana Inputs invalid; no calculations run."
+}

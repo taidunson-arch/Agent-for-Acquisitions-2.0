@@ -19,6 +19,16 @@ export interface DealInputs {
   ltvPct: number; // LTC on all-in basis
   ratePct: number;
   amortYears: number;
+  // ---- v4 optional extensions (affordable-housing capital stack + sourced evidence) ----
+  availableEquity?: number; // enables the equity hard stop
+  opexAnnual?: number; // dollar T-12 opex; overrides opexRatioPct
+  softSources?: number; // HOME, HTF, CDBG, local soft debt
+  deferredDevFee?: number;
+  marketCapRate?: number; // whole percent
+  amiRentLimit?: number; // per unit / month
+  lihtc?: { type: 4 | 9; eligibleBasis: number; applicableFraction: number; basisBoost?: boolean; creditPrice: number; creditRate?: number };
+  confirmedOverrides?: string[];
+  comps?: Comp[]; // must carry a source; unsourced comps are ignored
 }
 
 export type Verdict = "STRONG ADVANTAGE" | "NEGOTIATE" | "PASS";
@@ -43,6 +53,7 @@ export interface Comp {
   pricePerUnit: number;
   cap: number;
   period: string;
+  source?: string; // URL or document reference (required for use)
 }
 
 export interface ReportMetrics {
@@ -61,7 +72,8 @@ export interface ReportMetrics {
   ads: number;
   cashFlowAnnual: number;
   cashFlowMonthly: number;
-  goingInCap: number;
+  goingInCap: number; // NOI / askingPrice (buy-box definition)
+  yieldOnAllIn: number; // NOI / all-in (what v2 labeled goingInCap)
   stabNOI: number;
   stabCap: number;
   dscr: number;
@@ -90,7 +102,7 @@ export interface VerificationBlock {
   externalChecks: { source: string; url?: string; checkedAt: string; result: string }[];
   items: VerificationItem[];
   confidenceZones: { zone: "high" | "medium" | "low"; fields: string[]; reason: string }[];
-  overallConfidence: number;
+  overallConfidence: number | null; // null = not computed (v4 never invents a confidence)
 }
 
 export interface ReconciliationCheck {
@@ -136,8 +148,12 @@ export interface Report {
   verdict: Verdict;
   verdictLine: string;
   scores: { spread: number; dscr: number; cap: number; coc: number; total: number };
-  confidence: number;
+  confidence: number | null;
   m: ReportMetrics;
+  hardStops?: { metric: string; rule: string }[];
+  anomalies?: { type: string; detail: string }[];
+  warnings?: string[];
+  engine?: string;
   offer: { opening: number; target: number; ceiling: number; credits: number };
   levers: Lever[];
   matrix: SensitivityCell[][];
