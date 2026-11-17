@@ -9,6 +9,7 @@ An acquisitions-desk workbench that ingests **Dana Inputs** (`Dana_Inputs-202608
 ### One engine, two consumers
 - `src/lib/engine.mjs` is the single source of underwriting math. It has no dependencies and no Node APIs.
 - Offers (v4.2) are capped by every price constraint that applies: the DSCR 1.25x floor, the price the stated `availableEquity` can fund (`equity_supported_offer`), and the asking price. Walk-away is the lowest of these, the target is 96% of it and the opening is 92%. `offer.binding_constraint` names the one that binds. The engine never recommends paying above the ask or a price the capital stack can't fund.
+- `node tools/export_xlsx.mjs <deal.json> --out model.xlsx [--levers levers.json] [--ami ami_rents.json]` writes an Excel audit workbook. Every engine metric, the score, verdict, offer and the 20-cell stress grid are recomputed with live Excel formulas from named input cells (blue = input, black = formula, green = engine), and each has an OK/CHECK status against the engine. Checked in Excel on all 8 eval cases that underwrite: every check agrees.
 - The web app (`src/lib/underwrite.ts`) and the agent CLI (`node tools/underwrite.mjs deal.json`) both call it, so their numbers can't drift apart.
 - Every metric comes back with its formula and the calculation with numbers filled in. A metric that can't be computed returns `null` plus a reason, never `Infinity`, `NaN` or `-999`.
 

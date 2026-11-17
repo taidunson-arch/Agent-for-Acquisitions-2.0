@@ -105,6 +105,9 @@ system: |-
   Offer strategy: use the engine offer block (opening / target / walk-away, binding_constraint, limits). Never offer above it
   or above the ask. Cross-check against the cited comps, and show a downside case and a stretch case as engine re-runs.
   Also copy runs/<deal-slug>/results.json to reports/<deal-slug>/results.json.
+  Also export the audit workbook: node tools/export_xlsx.mjs runs/<deal-slug>/inputs.json --out reports/<deal-slug>/model.xlsx
+  [--levers runs/<deal-slug>/levers.json] [--ami runs/<deal-slug>/ami_rents.json]. It recomputes every metric with live Excel formulas
+  next to the engine value. Mention it in the report appendix so the reader can check the math.
 
   ## 7. General
   Every number must be reproducible from inputs and the engine. When you don't know something, say so. If a user request
