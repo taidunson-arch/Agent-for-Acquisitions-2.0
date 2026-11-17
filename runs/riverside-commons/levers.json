@@ -1,6 +1,6 @@
 {
   "engine": "acq2-underwrite v4.2",
-  "generated": "2026-11-17T15:50:28.130Z",
+  "generated": "2026-11-17T16:01:04.557Z",
   "equity_gap": 416800,
   "solved": {
     "max_price_clearing_equity_stop": 8318000,

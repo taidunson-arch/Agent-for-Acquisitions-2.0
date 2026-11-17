@@ -1,6 +1,6 @@
 {
-  "basis": "engine offer under rehab-only boost reading (scenario K)",
-  "offer": {
+  "basis": "engine offer under rehab-only boost reading (scenario K) and no-boost (scenario B)",
+  "K_offer": {
     "opening": 6383477,
     "target": 6661020,
     "walk_away": 6938562,
@@ -21,12 +21,32 @@
     ],
     "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $6,938,562, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
   },
-  "check_at_walk_away": {
+  "B_offer": {
+    "opening": 5748497,
+    "target": 5998431,
+    "walk_away": 6248366,
+    "binding_constraint": "available_equity",
+    "limits": [
+      {
+        "constraint": "dscr_floor",
+        "price": 13296837
+      },
+      {
+        "constraint": "available_equity",
+        "price": 6248366
+      },
+      {
+        "constraint": "asking_price",
+        "price": 9000000
+      }
+    ],
+    "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $6,248,366, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+  },
+  "K_check_at_walk_away": {
     "price": 6938562,
     "verdict": "STRONG ADVANTAGE",
     "score": 82,
     "dscr": 1.981837,
-    "equity_required": 1499999.944,
-    "hard_stops": []
+    "equity_required": 1499999.944
   }
 }
