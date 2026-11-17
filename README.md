@@ -101,7 +101,6 @@ src/
 │   ├── engine.mjs             # v4 shared underwriting engine (app + agent)
 │   ├── engine.d.mts           # engine types
 │   ├── underwrite.ts          # maps engine output to the Report view model
-│   ├── verify.ts              # v2 mock verification layer, no longer imported (safe to delete)
 │   ├── agent.ts               # log script builder (driven by real numbers)
 │   ├── format.ts              # currency / percent / multiple formatters
 │   └── types.ts               # shared domain types (extended with verification interfaces)

@@ -1,1 +1,6 @@
-Nothing needs to be added to the .gitignore file based on the provided changes. The listed files are all source code files (.ts, .tsx) and documentation (README.md), which should not be ignored.
+node_modules/
+dist/
+*.log
+.env
+.env.*
+.DS_Store
