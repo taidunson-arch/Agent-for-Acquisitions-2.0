@@ -1,0 +1,36 @@
+{
+  "id": "07_zero_equity_lihtc",
+  "title": "LIHTC + soft debt exceed all-in",
+  "tests": "CoC undefined with reason, flagged",
+  "inputs": {
+    "id": "riverside-commons",
+    "dealName": "Riverside Commons (4% LIHTC acq/rehab)",
+    "address": "88 River Rd",
+    "market": "Fresno, CA",
+    "assetType": "multifamily",
+    "askingPrice": 9000000,
+    "arv": 0,
+    "rehabBudget": 4000000,
+    "units": 80,
+    "currentRent": 1100,
+    "marketRent": 1150,
+    "vacancyPct": 5,
+    "opexRatioPct": 43,
+    "ancillaryPct": 2,
+    "closingCostPct": 2,
+    "ltvPct": 40,
+    "ratePct": 5.75,
+    "amortYears": 35,
+    "availableEquity": 1500000,
+    "marketCapRate": 5.5,
+    "amiRentLimit": 1180,
+    "softSources": 4600000,
+    "lihtc": {
+      "type": 4,
+      "eligibleBasis": 12000000,
+      "applicableFraction": 1,
+      "basisBoost": true,
+      "creditPrice": 0.88
+    }
+  }
+}

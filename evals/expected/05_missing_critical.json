@@ -1,0 +1,14 @@
+{
+  "status": "halt",
+  "engine": "acq2-underwrite v4.2",
+  "blocking": [
+    {
+      "field": "askingPrice",
+      "reason": "missing"
+    }
+  ],
+  "warnings": [
+    "no sourced comps supplied; comp-dependent items (price/unit benchmark, offer anchor) unsupported"
+  ],
+  "message": "Critical Dana Inputs invalid; no calculations run."
+}

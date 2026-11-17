@@ -1,0 +1,221 @@
+[
+  {
+    "case": "01_clean",
+    "want": "NEGOTIATE",
+    "before": "NEGOTIATE",
+    "before_validation_errors": [],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "NEGOTIATE",
+    "after_nonfinite": 0,
+    "after_hard_stops": []
+  },
+  {
+    "case": "02_negative_noi_confirmed",
+    "want": "PASS",
+    "before": "NEGOTIATE",
+    "before_validation_errors": [],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "PASS",
+    "after_nonfinite": 0,
+    "after_hard_stops": [
+      "noi",
+      "dscr"
+    ]
+  },
+  {
+    "case": "03_dscr_below_1",
+    "want": "PASS",
+    "before": "PASS",
+    "before_validation_errors": [],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "PASS",
+    "after_nonfinite": 0,
+    "after_hard_stops": [
+      "dscr"
+    ]
+  },
+  {
+    "case": "04_equity_shortfall",
+    "want": "PASS",
+    "before": "NEGOTIATE",
+    "before_validation_errors": [],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "PASS",
+    "after_nonfinite": 0,
+    "after_hard_stops": [
+      "equity_required"
+    ]
+  },
+  {
+    "case": "05_missing_critical",
+    "want": "HALT",
+    "before": "CRASH: Cannot read properties of undefined (reading 'toLocaleString')",
+    "before_validation_errors": [],
+    "before_nonfinite": null,
+    "before_comps_fabricated": null,
+    "before_conf": null,
+    "before_claims_external_checks": null,
+    "after": "HALT",
+    "after_nonfinite": 0,
+    "after_hard_stops": []
+  },
+  {
+    "case": "06_ambiguous_rent",
+    "want": "HALT",
+    "before": "STRONG ADVANTAGE",
+    "before_validation_errors": [],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "HALT",
+    "after_nonfinite": 0,
+    "after_hard_stops": []
+  },
+  {
+    "case": "07_zero_equity_lihtc",
+    "want": "NEGOTIATE",
+    "before": "NEGOTIATE",
+    "before_validation_errors": [
+      "arv"
+    ],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.878,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "NEGOTIATE",
+    "after_nonfinite": 0,
+    "after_hard_stops": []
+  },
+  {
+    "case": "08_anomaly_high_cap",
+    "want": "STRONG ADVANTAGE",
+    "before": "STRONG ADVANTAGE",
+    "before_validation_errors": [],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "STRONG ADVANTAGE",
+    "after_nonfinite": 0,
+    "after_hard_stops": []
+  },
+  {
+    "case": "09_expense_ratio_unconfirmed",
+    "want": "HALT",
+    "before": "NEGOTIATE",
+    "before_validation_errors": [],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "HALT",
+    "after_nonfinite": 0,
+    "after_hard_stops": []
+  },
+  {
+    "case": "10_lihtc_gap",
+    "want": "PASS",
+    "before": "NEGOTIATE",
+    "before_validation_errors": [
+      "arv"
+    ],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.878,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "PASS",
+    "after_nonfinite": 0,
+    "after_hard_stops": [
+      "equity_required"
+    ]
+  },
+  {
+    "case": "11_rate_as_decimal",
+    "want": "HALT",
+    "before": "STRONG ADVANTAGE",
+    "before_validation_errors": [
+      "ratePct"
+    ],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "HALT",
+    "after_nonfinite": 0,
+    "after_hard_stops": []
+  },
+  {
+    "case": "12_missing_minor",
+    "want": "NEGOTIATE",
+    "before": "NEGOTIATE",
+    "before_validation_errors": [
+      "dealName",
+      "address",
+      "market"
+    ],
+    "before_nonfinite": 0,
+    "before_comps_fabricated": 4,
+    "before_conf": 0.828,
+    "before_claims_external_checks": [
+      "County Assessor Records: Parcel ID verified, ownership confirmed",
+      "FEMA Flood Maps: No AE/VE zones detected",
+      "CoStar Comp Scan: 4 arms-length comps within 2mi / 180-day window"
+    ],
+    "after": "NEGOTIATE",
+    "after_nonfinite": 0,
+    "after_hard_stops": []
+  }
+]

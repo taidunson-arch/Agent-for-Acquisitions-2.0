@@ -2,72 +2,58 @@
 
 An acquisitions-desk workbench that ingests **Dana Inputs** (`Dana_Inputs-20260817T151903Z-1-001.zip` field schema) and runs a simulated **ACQ/2.0 agent** to produce a fully underwritten **Developer Deal Advantage Report** (`Developer-Deal-Advantage-Report-main` template, v2 upgrade).
 
-> **ACQ/2.0 Upgrade Complete**: The pipeline now underwrites live, stress-tests every deal, scores it 0–100, stamps a verdict, files it into a persisted pipeline, **and** ships with institutional-grade verification discipline ported from the sibling Developer Deal Advantage system.
+> **v4 (branch agent/v4):** one shared underwriting engine for the web app and the autonomous agent, no fabricated data, hard-stop rules, and an eval set with a before/after comparison. Target user: national affordable-housing developers.
 
-## What's New in ACQ/2.0
+## What changed in v4
 
-### Verification & Evidence Boundary (Blind Spot #1, #9)
-Every report now includes a **Verification & Evidence Boundary** section that discloses:
-- **Primary sources** used (OM, rent roll, T-12) with receipt dates
-- **External checks** performed (county assessor, FEMA flood maps, CoStar comp scan)
-- **Verification items table** showing what was independently verified vs accepted from broker materials
-- **Confidence zones** (high/medium/low) explaining which fields are reliable and which require additional diligence
-- **Overall model confidence** percentage, adjusted downward if reconciliation finds discrepancies
+### One engine, two consumers
+- `src/lib/engine.mjs` is the single source of underwriting math. It has no dependencies and no Node APIs.
+- Offers (v4.2) are capped by every price constraint that applies: the DSCR 1.25x floor, the price the stated `availableEquity` can fund (`equity_supported_offer`), and the asking price. Walk-away is the lowest of these, the target is 96% of it and the opening is 92%. `offer.binding_constraint` names the one that binds. The engine never recommends paying above the ask or a price the capital stack can't fund.
+- `node tools/export_xlsx.mjs <deal.json> --out model.xlsx [--levers levers.json] [--ami ami_rents.json]` writes an Excel audit workbook. Every engine metric, the score, verdict, offer and the 20-cell stress grid are recomputed with live Excel formulas from named input cells (blue = input, black = formula, green = engine), and each has an OK/CHECK status against the engine. Checked in Excel on all 8 eval cases that underwrite: every check agrees.
+- The web app (`src/lib/underwrite.ts`) and the agent CLI (`node tools/underwrite.mjs deal.json`) both call it, so their numbers can't drift apart.
+- Every metric comes back with its formula and the calculation with numbers filled in. A metric that can't be computed returns `null` plus a reason, never `Infinity`, `NaN` or `-999`.
 
-This is the exact pattern from your sibling system's `validate.py` — now ported to the acquisitions agent.
+### No fabricated evidence
+v2 generated comps from a seeded RNG, produced a random-looking "model confidence", and printed external checks that were never performed (County Assessor "verified", FEMA "no AE/VE zones", CoStar comp scan). v4 removes all of these:
+- Comps appear only when supplied with a `source`.
+- Confidence reads **Not computed**.
+- The Verification section lists only checks that actually ran. Everything else is marked *not performed*.
 
-### Document Reconciliation Sweep (Blind Spot #8)
-The agent now mechanically checks that key facts tie across source documents:
-- Unit count must match across OM, rent roll, and T-12
-- Asking price must be consistent
-- NOI figures must reconcile
+### Dana Inputs contract
+- The original 17 `DealInputs` fields are unchanged; percents are whole numbers.
+- Only critical fields block a run. Identity fields fall back to `[not provided]`.
+- Ambiguous units halt and ask instead of being converted silently: rent above 15,000/mo looks annual, and percents below 1 look like decimals.
+- Optional extensions for affordable deals: `availableEquity`, `opexAnnual`, `softSources`, `deferredDevFee`, `lihtc`, `amiRentLimit`, `marketCapRate`, `comps[]`.
 
-Any discrepancy is flagged at the top of the report with a detailed variance note, and model confidence is automatically reduced by 15%.
+### Decision rules
+- **Hard stops force PASS** regardless of score: NOI < 0, DSCR < 1.00x, or equity required > `availableEquity`.
+- Outliers (cap rate far from market, rent above the AMI limit, ask more than 8% above the ceiling) are flagged and scored, never auto-failed.
+- The loan is sized on the base budget, so rehab overruns in the stress matrix are funded with equity.
+- Break-even occupancy is no longer clamped at 100%.
+- "Going-in cap" now means NOI / price. NOI / all-in is reported separately as `yieldOnAllIn`.
 
-### Computational Verification Layer (Blind Spot #1, #2)
-Key metrics are recomputed programmatically and compared against reported values:
-- Price per unit
-- Going-in cap rate
-- Stabilized yield
-- DSCR
-- Cash-on-cash return
+### Evals and before/after
+- `evals/` holds 12 cases in the Dana schema (pass, hard stops, halts, LIHTC, anomaly, placeholders), the expected outputs, and a grader for agent runs.
+- `node baseline/compare_engines.mjs` runs the v2 engine (snapshot) and the v4 engine on the same cases. Result: **v2 5/12, v4 12/12.** v2 crashed on a missing price and returned STRONG ADVANTAGE on annual rent and on a decimal interest rate.
+- Full findings are in `docs/V4_COMPARISON.md`.
 
-Mismatches beyond a 0.5% tolerance are flagged as verification failures.
-
-### Assumption Freshness Checks (Blind Spot #13)
-Interest rate assumptions are checked against current agency quotes (mocked at 6.625% for now — production would fetch from Freddie Mac/Fannie Mae APIs). Deals modeled with stale rates (>25 bps variance) are flagged.
-
-### Sponsor Profile (Blind Spot #6)
-A basic sponsor diligence dimension has been added, modeled on the sibling system's `team_and_execution_risk` scoring:
-- Track record years
-- Deals closed
-- Average returns
-- Reliability score (0–100)
-
-Currently uses a lookup table; production would integrate with your CRM or deal database.
-
-### Portfolio Concentration Awareness (Blind Spot #5)
-The agent now checks whether a deal would push fund concentration limits:
-- Market-level concentration (e.g., max 5 deals in Columbus)
-- Asset-type concentration (e.g., max 8 multifamily assets)
-
-Exceeds are flagged with explicit warnings.
-
-### Buy Box Versioning (Blind Spot #4, #12)
-Reports now include a `buyBoxVersion` field (e.g., `"meridian-mf-vadd-q1-2026"`), enabling:
-- Audit trail of which buy box version screened which deal
-- Easy swapping of criteria for different client funds
-- Version governance for IC compliance
+### Agent
+`agent.v4.yaml` is the agent definition:
+- a progress line after every step, checkpoints, and per-step tool budgets
+- no repeated calls
+- a halt is written as an output instead of waiting for an answer
+- writes pre-authorized only to `runs/**` and `reports/**` on branch `agent/runs`
+- a verification-honesty rule
 
 ## Verdict Logic
 
 | Score | Verdict |
 | --- | --- |
-| ≥ 70 | **STRONG ADVANTAGE** |
-| 45 – 69 | **NEGOTIATE** |
-| < 45 | **PASS** |
+| ≥ 72 | **STRONG ADVANTAGE** |
+| 52 – 71 | **NEGOTIATE** |
+| < 52 | **PASS** |
 
-Weighted scoring: spread (35) · DSCR (25) · yield (20) · cash-on-cash (20).
+Weighted scoring (owner-confirmed): spread 30 · DSCR 25 · stabilized yield 25 · cash-on-cash 20. Undefined components are dropped and the remaining weights renormalized. Hard stops override the score.
 
 ## Tech Stack
 
@@ -114,8 +100,9 @@ src/
 │   ├── Pipeline.tsx           # deal-file rail with verdict scoring
 │   └── ui.tsx                 # reveal, count-up, ledger UI, inline SVG icons
 ├── lib/
-│   ├── underwrite.ts          # financial model, stress matrix, scoring (now calls verify.ts)
-│   ├── verify.ts              # NEW: verification block builder, reconciliation, computational checks
+│   ├── engine.mjs             # v4 shared underwriting engine (app + agent)
+│   ├── engine.d.mts           # engine types
+│   ├── underwrite.ts          # maps engine output to the Report view model
 │   ├── agent.ts               # log script builder (driven by real numbers)
 │   ├── format.ts              # currency / percent / multiple formatters
 │   └── types.ts               # shared domain types (extended with verification interfaces)
@@ -125,23 +112,4 @@ src/
 
 ## Upgrade Roadmap Status
 
-| Blind Spot | Issue | Status |
-|---|---|---|
-| #1 | No computational verification layer | ✅ Fixed — `verifyComputations()` in verify.ts |
-| #2 | No external data grounding | ⚠️ Partially addressed — mock external checks; API integration pending |
-| #3 | Screen, not underwrite | ✅ Already had full underwriting; enhanced with verification |
-| #4 | Hardcoded buy box | ⚠️ Version tagging added; config file migration next |
-| #5 | No portfolio awareness | ✅ Fixed — `checkPortfolioConcentration()` |
-| #6 | No sponsor diligence | ✅ Fixed — `buildSponsorProfile()` placeholder |
-| #7 | Shallow climate/insurance coverage | ⚠️ FEMA check added; climate API integration pending |
-| #8 | No reconciliation logic | ✅ Fixed — `reconcileDocuments()` sweep |
-| #9 | No evidence boundary | ✅ Fixed — full `VerificationBlock` with confidence zones |
-| #10 | No calibration fixtures | ⚠️ Sample deals exist; formal test suite pending |
-| #11 | No Excel/IC deck export | ❌ Still Markdown/PDF only |
-| #12 | No audit trail/versioning | ✅ Fixed — `buyBoxVersion` field |
-| #13 | No assumption freshness check | ✅ Fixed — `checkAssumptionFreshness()` |
-| #14 | Packaging blind spot | ✅ README updated; repo structure clarified |
-
-## License
-
-MIT
+The v2 roadmap marked several blind spots as "fixed" (computational verification, reconciliation, external grounding). Those implementations were mocks. See `docs/V4_COMPARISON.md` for what v4 actually implements and what is still open (live agent A/B, an eval case built from the Ashford Park document pack, real external data sources).

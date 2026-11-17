@@ -1,0 +1,392 @@
+{
+  "status": "ok",
+  "engine": "acq2-underwrite v4.2",
+  "config": {
+    "dscr_floor": 1.25,
+    "weights": {
+      "spread": 0.3,
+      "dscr": 0.25,
+      "cap": 0.25,
+      "coc": 0.2
+    },
+    "bands": {
+      "strong": 72,
+      "pass_below": 52
+    }
+  },
+  "warnings": [
+    "no sourced comps supplied; comp-dependent items (price/unit benchmark, offer anchor) unsupported"
+  ],
+  "placeholders": {},
+  "metrics": {
+    "closing_costs": {
+      "value": 140000,
+      "formula": "askingPrice x closingCostPct",
+      "calc": "$7,000,000 x 2% = $140,000"
+    },
+    "all_in": {
+      "value": 8040000,
+      "formula": "askingPrice + closing + rehab",
+      "calc": "$7,000,000 + $140,000 + $900,000 = $8,040,000"
+    },
+    "gpr": {
+      "value": 835200,
+      "formula": "units x currentRent x 12",
+      "calc": "48 x $1,450 x 12 = $835,200"
+    },
+    "vacancy_loss": {
+      "value": 41760,
+      "formula": "GPR x vacancyPct",
+      "calc": "$835,200 x 5% = $41,760"
+    },
+    "ancillary": {
+      "value": 23803.2,
+      "formula": "(GPR - vacancy) x ancillaryPct",
+      "calc": "($835,200 - $41,760) x 3% = $23,803"
+    },
+    "egi": {
+      "value": 817243.2,
+      "formula": "GPR - vacancy + ancillary",
+      "calc": "$835,200 - $41,760 + $23,803 = $817,243"
+    },
+    "opex": {
+      "value": 900000,
+      "formula": "opexAnnual (dollar override)",
+      "calc": "$900,000"
+    },
+    "noi": {
+      "value": -82756.8,
+      "formula": "EGI - opex",
+      "calc": "$817,243 - $900,000 = -$82,757"
+    },
+    "going_in_cap_pct": {
+      "value": -1.18224,
+      "formula": "NOI / askingPrice",
+      "calc": "-$82,757 / $7,000,000 = -1.18%",
+      "note": "buy-box definition (in-place NOI / price)"
+    },
+    "yield_on_all_in_pct": {
+      "value": -1.029313,
+      "formula": "NOI / all-in",
+      "calc": "-$82,757 / $8,040,000 = -1.03%",
+      "note": "what src/lib/underwrite.ts labels \"goingInCap\""
+    },
+    "stab_noi": {
+      "value": 1785.6,
+      "formula": "units x marketRent x 12 x (1-vac) x (1+anc) - opex",
+      "calc": "$1,786"
+    },
+    "stab_cap_pct": {
+      "value": 0.022209,
+      "formula": "stabNOI / all-in (yield on cost)",
+      "calc": "$1,786 / $8,040,000 = 0.02%"
+    },
+    "loan": {
+      "value": 5226000,
+      "formula": "base all-in x ltvPct",
+      "calc": "$8,040,000 x 65% = $5,226,000"
+    },
+    "ads": {
+      "value": 386128.570731,
+      "formula": "loan x r/(1-(1+r)^-n) x 12; r = ratePct/1200, n = amortYears x 12",
+      "calc": "$5,226,000 @ 6.25% / 30yr = $386,129"
+    },
+    "dscr": {
+      "value": -0.214324,
+      "formula": "NOI / ADS",
+      "calc": "-$82,757 / $386,129 = -0.214x"
+    },
+    "equity_required": {
+      "value": 2814000,
+      "formula": "all-in - loan - softSources - LIHTC equity - deferredDevFee",
+      "calc": "$8,040,000 - $5,226,000 - $0 - $0 - $0 = $2,814,000"
+    },
+    "cash_flow": {
+      "value": -468885.370731,
+      "formula": "NOI - ADS",
+      "calc": "-$82,757 - $386,129 = -$468,885"
+    },
+    "coc_pct": {
+      "value": -16.662593,
+      "formula": "cash flow / equity required",
+      "calc": "-$468,885 / $2,814,000 = -16.66%"
+    },
+    "supported_offer": {
+      "value": null,
+      "formula": "DSCR-supported price",
+      "undefined_reason": "NOI <= 0; no debt supportable"
+    },
+    "equity_supported_offer": {
+      "value": 8361344.537815,
+      "formula": "((availableEquity + soft + LIHTC + DDF) / (1 - LTC) - rehab) / (1 + closing%)",
+      "calc": "(($3,300,000 + $0 + $0 + $0) / 0.35 - $900,000) / 1.02 = $8,361,345",
+      "note": "max price the stated equity can fund; offers are capped here"
+    },
+    "mao70": {
+      "value": 5050000,
+      "formula": "0.70 x ARV - rehab",
+      "calc": "0.70 x $8,500,000 - $900,000 = $5,050,000",
+      "note": "flip heuristic; weak signal for income property"
+    },
+    "ceiling": {
+      "value": 5050000,
+      "formula": "max(MAO70, supported offer)",
+      "calc": "$5,050,000",
+      "note": "v4 drops the 0.55 x ask floor used in src/lib/underwrite.ts"
+    },
+    "spread_pct": {
+      "value": -27.857143,
+      "formula": "(ceiling - ask) / ask",
+      "calc": "($5,050,000 - $7,000,000) / $7,000,000 = -27.86%"
+    },
+    "price_per_unit": {
+      "value": 145833.333333,
+      "formula": "ask / units",
+      "calc": "$7,000,000 / 48 = $145,833"
+    },
+    "grm": {
+      "value": 8.381226,
+      "formula": "ask / GPR (annual)",
+      "calc": "$7,000,000 / $835,200 = 8.38"
+    },
+    "breakeven_occ_pct": {
+      "value": 149.50533,
+      "formula": "(opex + ADS) / (GPR x (1 + anc%))",
+      "calc": "($900,000 + $386,129) / $860,256 = 149.51%",
+      "note": "RED FLAG: cannot break even at 100% occupancy (not clamped)"
+    },
+    "rent_gap_pct": {
+      "value": 10.344828,
+      "formula": "(marketRent - currentRent) / currentRent",
+      "calc": "10.34%"
+    }
+  },
+  "stress": {
+    "rent_steps": [
+      -0.08,
+      -0.04,
+      0,
+      0.04,
+      0.08
+    ],
+    "rehab_steps": [
+      0,
+      0.1,
+      0.2,
+      0.3
+    ],
+    "cells": [
+      {
+        "rent_delta": -0.08,
+        "rehab_delta": 0,
+        "noi": -148136.26,
+        "dscr": -0.3836,
+        "coc_pct": -18.986,
+        "equity_required": 2814000
+      },
+      {
+        "rent_delta": -0.08,
+        "rehab_delta": 0.1,
+        "noi": -148136.26,
+        "dscr": -0.3836,
+        "coc_pct": -18.3975,
+        "equity_required": 2904000
+      },
+      {
+        "rent_delta": -0.08,
+        "rehab_delta": 0.2,
+        "noi": -148136.26,
+        "dscr": -0.3836,
+        "coc_pct": -17.8445,
+        "equity_required": 2994000
+      },
+      {
+        "rent_delta": -0.08,
+        "rehab_delta": 0.3,
+        "noi": -148136.26,
+        "dscr": -0.3836,
+        "coc_pct": -17.3238,
+        "equity_required": 3084000
+      },
+      {
+        "rent_delta": -0.04,
+        "rehab_delta": 0,
+        "noi": -115446.53,
+        "dscr": -0.299,
+        "coc_pct": -17.8243,
+        "equity_required": 2814000
+      },
+      {
+        "rent_delta": -0.04,
+        "rehab_delta": 0.1,
+        "noi": -115446.53,
+        "dscr": -0.299,
+        "coc_pct": -17.2719,
+        "equity_required": 2904000
+      },
+      {
+        "rent_delta": -0.04,
+        "rehab_delta": 0.2,
+        "noi": -115446.53,
+        "dscr": -0.299,
+        "coc_pct": -16.7527,
+        "equity_required": 2994000
+      },
+      {
+        "rent_delta": -0.04,
+        "rehab_delta": 0.3,
+        "noi": -115446.53,
+        "dscr": -0.299,
+        "coc_pct": -16.2638,
+        "equity_required": 3084000
+      },
+      {
+        "rent_delta": 0,
+        "rehab_delta": 0,
+        "noi": -82756.8,
+        "dscr": -0.2143,
+        "coc_pct": -16.6626,
+        "equity_required": 2814000
+      },
+      {
+        "rent_delta": 0,
+        "rehab_delta": 0.1,
+        "noi": -82756.8,
+        "dscr": -0.2143,
+        "coc_pct": -16.1462,
+        "equity_required": 2904000
+      },
+      {
+        "rent_delta": 0,
+        "rehab_delta": 0.2,
+        "noi": -82756.8,
+        "dscr": -0.2143,
+        "coc_pct": -15.6608,
+        "equity_required": 2994000
+      },
+      {
+        "rent_delta": 0,
+        "rehab_delta": 0.3,
+        "noi": -82756.8,
+        "dscr": -0.2143,
+        "coc_pct": -15.2038,
+        "equity_required": 3084000
+      },
+      {
+        "rent_delta": 0.04,
+        "rehab_delta": 0,
+        "noi": -50067.07,
+        "dscr": -0.1297,
+        "coc_pct": -15.5009,
+        "equity_required": 2814000
+      },
+      {
+        "rent_delta": 0.04,
+        "rehab_delta": 0.1,
+        "noi": -50067.07,
+        "dscr": -0.1297,
+        "coc_pct": -15.0205,
+        "equity_required": 2904000
+      },
+      {
+        "rent_delta": 0.04,
+        "rehab_delta": 0.2,
+        "noi": -50067.07,
+        "dscr": -0.1297,
+        "coc_pct": -14.569,
+        "equity_required": 2994000
+      },
+      {
+        "rent_delta": 0.04,
+        "rehab_delta": 0.3,
+        "noi": -50067.07,
+        "dscr": -0.1297,
+        "coc_pct": -14.1438,
+        "equity_required": 3084000
+      },
+      {
+        "rent_delta": 0.08,
+        "rehab_delta": 0,
+        "noi": -17377.34,
+        "dscr": -0.045,
+        "coc_pct": -14.3392,
+        "equity_required": 2814000
+      },
+      {
+        "rent_delta": 0.08,
+        "rehab_delta": 0.1,
+        "noi": -17377.34,
+        "dscr": -0.045,
+        "coc_pct": -13.8948,
+        "equity_required": 2904000
+      },
+      {
+        "rent_delta": 0.08,
+        "rehab_delta": 0.2,
+        "noi": -17377.34,
+        "dscr": -0.045,
+        "coc_pct": -13.4772,
+        "equity_required": 2994000
+      },
+      {
+        "rent_delta": 0.08,
+        "rehab_delta": 0.3,
+        "noi": -17377.34,
+        "dscr": -0.045,
+        "coc_pct": -13.0838,
+        "equity_required": 3084000
+      }
+    ]
+  },
+  "score": {
+    "components": {
+      "spread": 0,
+      "dscr": 0,
+      "cap": 0,
+      "coc": 0
+    },
+    "weights_used": {
+      "spread": 0.3,
+      "dscr": 0.25,
+      "cap": 0.25,
+      "coc": 0.2
+    },
+    "total": 0
+  },
+  "hard_stops": [
+    {
+      "metric": "noi",
+      "value": -82756.8,
+      "rule": "NOI < 0"
+    },
+    {
+      "metric": "dscr",
+      "value": -0.2143,
+      "rule": "DSCR -0.21x < 1.00x at proposed terms"
+    }
+  ],
+  "anomalies": [
+    {
+      "type": "cap_rate_low",
+      "detail": "going-in -1.18% vs market 6.00%"
+    },
+    {
+      "type": "breakeven_above_100",
+      "detail": "149.51%"
+    },
+    {
+      "type": "ask_above_ceiling",
+      "detail": "ask is 27.86% above ceiling (old code auto-PASSed this; v4 scores it)"
+    }
+  ],
+  "verdict": "PASS",
+  "verdict_basis": "HARD STOP: NOI < 0; DSCR -0.21x < 1.00x at proposed terms",
+  "comps_used": [],
+  "offer": {
+    "unsupported": "no positive DSCR-supported offer"
+  },
+  "verification": {
+    "performed": [],
+    "note": "Engine performs no external checks. Agent must list only checks it actually ran, with URL and timestamp."
+  }
+}

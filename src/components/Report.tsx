@@ -67,7 +67,7 @@ export default function DealReport({ report: r, onRerun, onPrint }: { report: Re
   const maxIncome = Math.max(m.pgi, 1);
 
   const cellBg = (coc: number, base: boolean) => {
-    const bg = coc <= 0 ? "rgba(176,58,36,0.20)" : coc < 4 ? "rgba(176,58,36,0.07)" : coc >= 8 ? "rgba(46,125,84,0.15)" : "transparent";
+    const bg = !Number.isFinite(coc) ? "transparent" : coc <= 0 ? "rgba(176,58,36,0.20)" : coc < 4 ? "rgba(176,58,36,0.07)" : coc >= 8 ? "rgba(46,125,84,0.15)" : "transparent";
     return { backgroundColor: bg, boxShadow: base ? `inset 0 0 0 2px ${hex}` : undefined };
   };
 
@@ -123,6 +123,9 @@ export default function DealReport({ report: r, onRerun, onPrint }: { report: Re
               </div>
               <div>
                 <p className="text-[14px] leading-relaxed font-medium text-inkline/90 max-w-xl">{r.verdictLine}</p>
+                {(r.anomalies ?? []).length > 0 && (
+                  <p className="mt-2 font-mono text-[10.5px] text-ember-deep">ANOMALIES: {(r.anomalies ?? []).map((a) => a.detail).join(" · ")}</p>
+                )}
                 <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {[
                     { l: "Spread", v: r.scores.spread },
@@ -141,7 +144,7 @@ export default function DealReport({ report: r, onRerun, onPrint }: { report: Re
                   ))}
                 </div>
                 <div className="mt-3 font-mono text-[10.5px] text-ink-faint">
-                  MODEL CONFIDENCE {(r.confidence * 100).toFixed(0)}% · COMPS {r.comps.length} · STRESS CELLS {r.matrix.flat().length}
+                  CONFIDENCE NOT COMPUTED · SOURCED COMPS {r.comps.length} · STRESS CELLS {r.matrix.flat().length}{r.engine ? ` · ${r.engine}` : ""}
                 </div>
               </div>
             </div>
@@ -254,7 +257,7 @@ export default function DealReport({ report: r, onRerun, onPrint }: { report: Re
                           <td key={ci} className="p-1">
                             <div className="rounded px-2 py-2 text-center font-mono text-[12px] font-bold tnum transition-transform hover:scale-[1.06]" style={cellBg(cell.coc, base)}>
                               <span className={cell.coc <= 0 ? "text-ember-deep" : cell.coc >= 8 ? "text-moss-deep" : "text-inkline/85"}>
-                                {cell.coc <= -900 ? "—" : `${cell.coc < 0 ? "−" : ""}${Math.abs(cell.coc).toFixed(1)}%`}
+                                {!Number.isFinite(cell.coc) ? "n/a" : `${cell.coc < 0 ? "-" : ""}${Math.abs(cell.coc).toFixed(1)}%`}
                               </span>
                               <span className="block text-[8.5px] font-medium text-ink-faint mt-0.5">{Number.isFinite(cell.dscr) ? `${cell.dscr.toFixed(2)}×` : "n/a"}</span>
                             </div>
@@ -303,21 +306,21 @@ export default function DealReport({ report: r, onRerun, onPrint }: { report: Re
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="font-mono text-[9.5px] tracking-[0.2em] uppercase text-paper/60">Opening</div>
-                  <CountUp value={r.offer.opening} format={(n) => fmtK(Math.round(n))} className="block font-display text-[26px] sm:text-[34px] font-bold leading-tight mt-1" />
+                  <CountUp value={Number.isFinite(r.offer.opening) ? r.offer.opening : 0} format={(n) => (Number.isFinite(r.offer.opening) ? fmtK(Math.round(n)) : "N/S")} className="block font-display text-[26px] sm:text-[34px] font-bold leading-tight mt-1" />
                 </div>
                 <div className="border-x border-paper/15">
                   <div className="font-mono text-[9.5px] tracking-[0.2em] uppercase text-brass">Target</div>
-                  <CountUp value={r.offer.target} format={(n) => fmtK(Math.round(n))} className="block font-display text-[26px] sm:text-[34px] font-bold leading-tight mt-1 text-brass" />
+                  <CountUp value={Number.isFinite(r.offer.target) ? r.offer.target : 0} format={(n) => (Number.isFinite(r.offer.target) ? fmtK(Math.round(n)) : "N/S")} className="block font-display text-[26px] sm:text-[34px] font-bold leading-tight mt-1 text-brass" />
                 </div>
                 <div>
                   <div className="font-mono text-[9.5px] tracking-[0.2em] uppercase text-paper/60">Ceiling</div>
-                  <CountUp value={r.offer.ceiling} format={(n) => fmtK(Math.round(n))} className="block font-display text-[26px] sm:text-[34px] font-bold leading-tight mt-1" />
+                  <CountUp value={Number.isFinite(r.offer.ceiling) ? r.offer.ceiling : 0} format={(n) => (Number.isFinite(r.offer.ceiling) ? fmtK(Math.round(n)) : "N/S")} className="block font-display text-[26px] sm:text-[34px] font-bold leading-tight mt-1" />
                 </div>
               </div>
               <p className="mt-4 text-[12.5px] leading-relaxed text-paper/80 border-t border-paper/15 pt-3.5">
-                Open at <strong className="text-paper">{fmtUSD(r.offer.opening)}</strong>, anchor the negotiation on the comp set at {fmtK(m.pricePerUnit)}/door,
+                Open at <strong className="text-paper">{fmtUSD(r.offer.opening)}</strong>, {r.comps.length ? <>anchor on the {r.comps.length} sourced comps (subject {fmtK(m.pricePerUnit)}/door),</> : <>anchor on the DSCR-supported offer (no sourced comps supplied),</>}
                 and request <strong className="text-brass">{fmtUSD(r.offer.credits)}</strong> in closing / rehab credits. Walk away above {fmtUSD(r.offer.ceiling)} —
-                past that number both the DSCR floor and sponsor return fail committee.
+                past that number the 1.25× DSCR floor fails.
               </p>
             </div>
           </div>
@@ -336,13 +339,18 @@ export default function DealReport({ report: r, onRerun, onPrint }: { report: Re
                 </tr>
               </thead>
               <tbody>
+                {r.comps.length === 0 && (
+                  <tr className="border-b border-inkline/10">
+                    <td colSpan={5} className="py-2 pr-3 text-[12px] text-ink-faint">No sourced comps supplied. Comp-dependent benchmarks are unsupported; none are generated.</td>
+                  </tr>
+                )}
                 {r.comps.map((c) => (
                   <tr key={c.address} className="border-b border-inkline/10 hover:bg-paper-2/70 transition-colors">
                     <td className="py-2 pr-3 text-[13px] font-medium">{c.address}</td>
                     <td className="py-2 pr-3 font-mono text-[12px] tnum text-ink-soft">{c.distanceMi} mi</td>
                     <td className="py-2 pr-3 font-mono text-[12px] tnum font-semibold">{fmtK(c.pricePerUnit)}</td>
                     <td className="py-2 pr-3 font-mono text-[12px] tnum text-ink-soft">{fmtPct(c.cap)}</td>
-                    <td className="py-2 font-mono text-[11px] text-ink-faint">{c.period}</td>
+                    <td className="py-2 font-mono text-[11px] text-ink-faint">{c.period}{c.source ? ` · ${c.source}` : ""}</td>
                   </tr>
                 ))}
                 <tr className="bg-moss-deep/10">
@@ -462,7 +470,7 @@ export default function DealReport({ report: r, onRerun, onPrint }: { report: Re
               {/* Overall confidence */}
               <div className="mt-3 flex items-center justify-between">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">Overall Model Confidence</span>
-                <span className="font-display text-xl font-bold text-inkline">{(r.verification.overallConfidence * 100).toFixed(0)}%</span>
+                <span className="font-display text-xl font-bold text-inkline">{r.verification.overallConfidence === null ? "Not computed" : `${(r.verification.overallConfidence * 100).toFixed(0)}%`}</span>
               </div>
             </div>
           </Reveal>
