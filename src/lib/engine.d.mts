@@ -16,7 +16,7 @@ export interface EngineOk {
   anomalies: { type: string; detail: string }[];
   verdict: "STRONG ADVANTAGE" | "NEGOTIATE" | "PASS"; verdict_basis: string;
   comps_used: NonNullable<DealInputs["comps"]>;
-  offer: { opening: number; target: number; walk_away: number; basis: string } | { unsupported: string };
+  offer: { opening: number; target: number; walk_away: number; binding_constraint: 'dscr_floor' | 'available_equity' | 'asking_price'; limits: { constraint: string; price: number }[]; basis: string } | { unsupported: string };
   verification: { performed: unknown[]; note: string };
 }
 export type EngineResult = EngineOk | EngineHalt;

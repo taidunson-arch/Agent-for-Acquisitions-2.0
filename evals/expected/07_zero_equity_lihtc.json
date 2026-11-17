@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "engine": "acq2-underwrite v4.1",
+  "engine": "acq2-underwrite v4.2",
   "config": {
     "dscr_floor": 1.25,
     "weights": {
@@ -121,6 +121,12 @@
       "value": 13296836.754332,
       "formula": "((NOI / (floor x 12 x PI_per_$)) / LTC - rehab) / (1 + closing%)",
       "calc": "maxLoan $7,025,109 at 1.25x -> price $13,296,837"
+    },
+    "equity_supported_offer": {
+      "value": 15018300.653595,
+      "formula": "((availableEquity + soft + LIHTC + DDF) / (1 - LTC) - rehab) / (1 + closing%)",
+      "calc": "(($1,500,000 + $4,600,000 + $5,491,200 + $0) / 0.6 - $4,000,000) / 1.02 = $15,018,301",
+      "note": "max price the stated equity can fund; offers are capped here"
     },
     "mao70": {
       "value": null,
@@ -360,10 +366,25 @@
   "verdict_basis": "score 70 (STRONG >= 72, PASS < 52)",
   "comps_used": [],
   "offer": {
-    "opening": 12233090,
-    "target": 13296837,
-    "walk_away": 13296837,
-    "basis": "DSCR-supported offer at 1.25x; NO sourced comps, so the anchor is unsupported"
+    "opening": 8280000,
+    "target": 8640000,
+    "walk_away": 9000000,
+    "binding_constraint": "asking_price",
+    "limits": [
+      {
+        "constraint": "dscr_floor",
+        "price": 13296837
+      },
+      {
+        "constraint": "available_equity",
+        "price": 15018301
+      },
+      {
+        "constraint": "asking_price",
+        "price": 9000000
+      }
+    ],
+    "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $15,018,301, asking price $9,000,000; binding: asking price; target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
   },
   "verification": {
     "performed": [],
