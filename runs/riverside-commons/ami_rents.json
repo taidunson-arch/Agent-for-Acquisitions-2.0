@@ -1,0 +1,54 @@
+{
+  "area": "Fresno, CA HMFA",
+  "fy": 2026,
+  "mfi": 91300,
+  "effective": "2026-05-01",
+  "limits_60": [
+    40800,
+    46620,
+    52440,
+    58260,
+    62940,
+    67620,
+    72300,
+    76920
+  ],
+  "rents": [
+    {
+      "bedrooms": 0,
+      "imputed_persons": 1,
+      "income_limit_60": 40800,
+      "max_gross_rent_60": 1020,
+      "calc": "$40,800 x 30% / 12"
+    },
+    {
+      "bedrooms": 1,
+      "imputed_persons": 1.5,
+      "income_limit_60": 43710,
+      "max_gross_rent_60": 1092,
+      "calc": "$43,710 x 30% / 12"
+    },
+    {
+      "bedrooms": 2,
+      "imputed_persons": 3,
+      "income_limit_60": 52440,
+      "max_gross_rent_60": 1311,
+      "calc": "$52,440 x 30% / 12"
+    },
+    {
+      "bedrooms": 3,
+      "imputed_persons": 4.5,
+      "income_limit_60": 60600,
+      "max_gross_rent_60": 1515,
+      "calc": "$60,600 x 30% / 12"
+    },
+    {
+      "bedrooms": 4,
+      "imputed_persons": 6,
+      "income_limit_60": 67620,
+      "max_gross_rent_60": 1690,
+      "calc": "$67,620 x 30% / 12"
+    }
+  ],
+  "generated": "2026-11-17T15:30:01.796Z"
+}

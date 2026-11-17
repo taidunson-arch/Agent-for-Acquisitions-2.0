@@ -1,0 +1,176 @@
+{
+  "engine": "acq2-underwrite v4.1",
+  "generated": "2026-11-17T15:30:49.468Z",
+  "equity_gap": 416800,
+  "solved": {
+    "max_price_clearing_equity_stop": 8318000,
+    "min_ltc_clearing_equity_stop_pct": 43.17,
+    "max_ltc_at_125_dscr_pct": 53.3
+  },
+  "scenarios": [
+    {
+      "label": "A. Base case (as submitted)",
+      "changes": "d => {}",
+      "verdict": "PASS",
+      "score": 76,
+      "hard_stops": [
+        "equity required $1,916,800 > available $1,500,000"
+      ],
+      "dscr": 1.665665,
+      "loan": 5272000,
+      "all_in": 13180000,
+      "lihtc_equity": 5491200,
+      "equity_required": 1916800,
+      "coc_pct": 12.160568
+    },
+    {
+      "label": "B. No 130% basis boost (site not in QCT/DDA)",
+      "changes": "d => { d.lihtc.basisBoost = false; }",
+      "verdict": "PASS",
+      "score": 71,
+      "hard_stops": [
+        "equity required $3,184,000 > available $1,500,000"
+      ],
+      "dscr": 1.665665,
+      "loan": 5272000,
+      "all_in": 13180000,
+      "lihtc_equity": 4224000,
+      "equity_required": 3184000,
+      "coc_pct": 7.320784
+    },
+    {
+      "label": "C. Price cut to clear equity stop",
+      "changes": "d => { d.askingPrice = Math.floor(priceOk / 1000) * 1000; }",
+      "verdict": "STRONG ADVANTAGE",
+      "score": 78,
+      "hard_stops": [],
+      "dscr": 1.758478,
+      "loan": 4993744,
+      "all_in": 12484360,
+      "lihtc_equity": 5491200,
+      "equity_required": 1499416,
+      "coc_pct": 16.778237
+    },
+    {
+      "label": "D. Raise loan LTC to clear equity stop",
+      "changes": "d => { d.ltvPct = Math.ceil(ltcClear * 100) / 100; }",
+      "verdict": "STRONG ADVANTAGE",
+      "score": 76,
+      "hard_stops": [],
+      "dscr": 1.543354,
+      "loan": 5689806,
+      "all_in": 13180000,
+      "lihtc_equity": 5491200,
+      "equity_required": 1498994,
+      "coc_pct": 13.698725
+    },
+    {
+      "label": "E. Loan LTC 48% (headroom)",
+      "changes": "d => { d.ltvPct = 48; }",
+      "verdict": "NEGOTIATE",
+      "score": 66,
+      "hard_stops": [],
+      "dscr": 1.388054,
+      "loan": 6326400,
+      "all_in": 13180000,
+      "lihtc_equity": 5491200,
+      "equity_required": 862400,
+      "coc_pct": 18.90775
+    },
+    {
+      "label": "F. Add soft sources equal to gap",
+      "changes": "d => { d.softSources = (d.softSources || 0) + Math.ceil(gap); }",
+      "verdict": "STRONG ADVANTAGE",
+      "score": 76,
+      "hard_stops": [],
+      "dscr": 1.665665,
+      "loan": 5272000,
+      "all_in": 13180000,
+      "lihtc_equity": 5491200,
+      "equity_required": 1500000,
+      "coc_pct": 15.539585
+    },
+    {
+      "label": "G. Defer developer fee equal to gap",
+      "changes": "d => { d.deferredDevFee = Math.ceil(gap); }",
+      "verdict": "STRONG ADVANTAGE",
+      "score": 76,
+      "hard_stops": [],
+      "dscr": 1.665665,
+      "loan": 5272000,
+      "all_in": 13180000,
+      "lihtc_equity": 5491200,
+      "equity_required": 1500000,
+      "coc_pct": 15.539585
+    },
+    {
+      "label": "H. No boost + LTC at 1.25x max",
+      "changes": "d => { d.lihtc.basisBoost = false; d.ltvPct = Math.floor(ltcMaxDscr * 100) / 100; }",
+      "verdict": "PASS",
+      "score": 38,
+      "hard_stops": [],
+      "dscr": 1.25003,
+      "loan": 7024940,
+      "all_in": 13180000,
+      "lihtc_equity": 4224000,
+      "equity_required": 1431060,
+      "coc_pct": 8.152233
+    },
+    {
+      "label": "I. Loan LTC 50% (bonds ~50% of all-in; legacy 50% test)",
+      "changes": "d => { d.ltvPct = 50; }",
+      "verdict": "NEGOTIATE",
+      "score": 56,
+      "hard_stops": [],
+      "dscr": 1.332532,
+      "loan": 6590000,
+      "all_in": 13180000,
+      "lihtc_equity": 5491200,
+      "equity_required": 598800,
+      "coc_pct": 24.307298
+    },
+    {
+      "label": "J. Rehab +20% overrun, loan resized on new budget",
+      "changes": "d => { d.rehabBudget = d.rehabBudget * 1.2; }",
+      "verdict": "PASS",
+      "score": 73,
+      "hard_stops": [
+        "equity required $2,396,800 > available $1,500,000"
+      ],
+      "dscr": 1.570348,
+      "loan": 5592000,
+      "all_in": 13980000,
+      "lihtc_equity": 5491200,
+      "equity_required": 2396800,
+      "coc_pct": 8.838424
+    },
+    {
+      "label": "K. Boost on rehab basis only (acq basis unboosted)",
+      "changes": "d => { const reh = d.rehabBudget; d.lihtc.eligibleBasis = (d.lihtc.eligibleBasis - reh) + reh * 1.3; d.lihtc.basisBoost = false; }",
+      "verdict": "PASS",
+      "score": 73,
+      "hard_stops": [
+        "equity required $2,761,600 > available $1,500,000"
+      ],
+      "dscr": 1.665665,
+      "loan": 5272000,
+      "all_in": 13180000,
+      "lihtc_equity": 4646400,
+      "equity_required": 2761600,
+      "coc_pct": 8.440534
+    },
+    {
+      "label": "L. K + loan LTC at 1.25x max",
+      "changes": "d => { const reh = d.rehabBudget; d.lihtc.eligibleBasis = (d.lihtc.eligibleBasis - reh) + reh * 1.3; d.lihtc.basisBoost = false; d.ltvPct = Math.floor(ltcMaxDscr * 100) / 100; }",
+      "verdict": "PASS",
+      "score": 41,
+      "hard_stops": [],
+      "dscr": 1.25003,
+      "loan": 7024940,
+      "all_in": 13180000,
+      "lihtc_equity": 4646400,
+      "equity_required": 1008660,
+      "coc_pct": 11.566172
+    }
+  ]
+}

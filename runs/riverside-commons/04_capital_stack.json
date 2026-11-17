@@ -1,0 +1,6 @@
+{
+  "step": "04_capital_stack",
+  "completed": "2026-11-17T15:43:06.210Z",
+  "result": "equity required $1,916,800 vs $1,500,000 available",
+  "artifact": "runs/riverside-commons/results.json"
+}

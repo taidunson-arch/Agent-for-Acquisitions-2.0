@@ -1,0 +1,6 @@
+{
+  "step": "05_stress",
+  "completed": "2026-11-17T15:43:06.393Z",
+  "result": "20 cells; DSCR >= 1.53x everywhere; 0 cells clear equity",
+  "artifact": "runs/riverside-commons/results.json"
+}

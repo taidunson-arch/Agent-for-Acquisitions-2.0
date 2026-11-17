@@ -1,0 +1,6 @@
+{
+  "step": "06_decision",
+  "completed": "2026-11-17T15:43:06.622Z",
+  "result": "PASS (hard stop: equity); score 76; 12 lever scenarios",
+  "artifact": "runs/riverside-commons/levers.json"
+}

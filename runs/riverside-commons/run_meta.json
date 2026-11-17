@@ -1,0 +1,10 @@
+{
+  "operator": "OpenClaw main agent (claude-opus-5-5) executing agent.v4.yaml run contract; not the configured claude-sonnet-5 agent (no Anthropic API key on host)",
+  "started": "2026-11-17T07:26:00-08:00",
+  "first_output_seconds": null,
+  "wall_seconds": null,
+  "tool_calls": null,
+  "cost_usd": null,
+  "looped": false,
+  "note": "timings not instrumented; wall clock inflated by an interrupted assistant turn"
+}

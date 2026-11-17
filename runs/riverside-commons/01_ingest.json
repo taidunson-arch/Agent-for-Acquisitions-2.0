@@ -1,0 +1,6 @@
+{
+  "step": "01_ingest",
+  "completed": "2026-11-17T15:43:05.391Z",
+  "result": "ok; validate() status ok, 0 blocking",
+  "artifact": "runs/riverside-commons/inputs.json"
+}

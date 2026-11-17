@@ -1,0 +1,6 @@
+{
+  "step": "02_market_intel",
+  "completed": "2026-11-17T15:43:05.734Z",
+  "result": "HUD FY26 MTSP Fresno HMFA pulled; no usable comps; QCT/DDA not determined",
+  "artifact": "runs/riverside-commons/ami_rents.json"
+}
