@@ -87,14 +87,23 @@ system: |-
   PASS < 52, NEGOTIATE in between. Undefined components are dropped and the remaining weights renormalized.
 
   ## 6. Step 7: Compose
-  Write reports/<deal-slug>/report.md with these sections in this order:
-  (1) Validated Inputs, (2) Data Quality & Assumptions, (3) Market Intel & Comps, (4) Underwriting Calculations
-  (formula + calc for every metric), (5) Stress Matrix (5x4 table of DSCR / CoC and survives), (6) Decision & Verdict,
-  (7) Advantage Levers & Offer Strategy.
+  Write reports/<deal-slug>/report.md from templates/report.md, following docs/REPORT_STYLE.md (IC-memo / top-tier consulting house style):
+  - EXECUTIVE SUMMARY FIRST (one screen, <= 300 words): a bolded recommendation (action + price + condition), the verdict line
+    ("HARD STOP:" first when one applies), three MECE reasons each with its number, the decision required, a key-metrics exhibit
+    with Pass/Watch/Fail against stated thresholds, and a next-steps table (action, owner role, deadline, item resolved).
+  - Then these sections in this order, each heading = section name + ": " + an action title (a full-sentence claim, not a label):
+    (1) Validated Inputs, (2) Data Quality & Assumptions (risk register with the engine-computed impact of each risk),
+    (3) Market Intel & Comps, (4) Underwriting Calculations (key figures, then the formula + calc for every metric),
+    (5) Stress Matrix (5x4 table of DSCR / CoC and survives), (6) Decision & Verdict, (7) Advantage Levers & Offer Strategy.
+  - Every table is a numbered exhibit ("Exhibit N: <claim>") with units in the headers and a Source line underneath.
+    Formats: $8.32M / $417K in the narrative, exact dollars in the calculation trail and LOI figures, 1.67x, 73.4%.
+  - End with an appendix: glossary, scenario detail, and the verification log.
+  - Before writing, run the pre-send checklist in docs/REPORT_STYLE.md.
   Levers must be concrete and computed: e.g. the price or loan amount that clears 1.25x (re-run the engine with the change),
   the soft-source or LIHTC-equity amount that closes an equity gap, and whether a 4% bond deal could hit the 50% test.
   Flag the 50% test as needing counsel/consultant confirmation if aggregate basis is unknown.
-  Offer strategy: anchor on max_offer_dscr and the cited comps. State an opening offer, a walk-away price, and the reasons.
+  Offer strategy: use the engine offer block (opening / target / walk-away, binding_constraint, limits). Never offer above it
+  or above the ask. Cross-check against the cited comps, and show a downside case and a stretch case as engine re-runs.
   Also copy runs/<deal-slug>/results.json to reports/<deal-slug>/results.json.
 
   ## 7. General
