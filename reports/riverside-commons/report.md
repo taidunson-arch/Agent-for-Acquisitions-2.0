@@ -1,7 +1,7 @@
 # Developer Deal Advantage Report: Riverside Commons (4% LIHTC acq/rehab)
 
 **Deal:** 88 River Rd, Fresno, CA · 80 units · multifamily · 4% LIHTC acquisition/rehab  
-**Engine:** acq2-underwrite v4.1 (tools/underwrite.mjs) · **Generated:** 2026-11-17T15:42:48.917Z  
+**Engine:** acq2-underwrite v4.2 (tools/underwrite.mjs) · **Generated:** 2026-11-17T15:50:28.343Z  
 **Verdict:** **PASS** (score 76/100, overridden by hard stop)
 
 > **Top-line flags (read first)**
@@ -79,6 +79,7 @@ Gross rent includes the utility allowance. Current average rent is $1,100 and ma
 | cash_flow | $233,094 | NOI - ADS | $583,260 - $350,167 = $233,094 |
 | coc_pct | 12.16% | cash flow / equity required | $233,094 / $1,916,800 = 12.16% |
 | supported_offer | $13,296,837 | ((NOI / (floor x 12 x PI_per_$)) / LTC - rehab) / (1 + closing%) | maxLoan $7,025,109 at 1.25x -> price $13,296,837 |
+| equity_supported_offer | $8,318,954 | ((availableEquity + soft + LIHTC + DDF) / (1 - LTC) - rehab) / (1 + closing%) | (($1,500,000 + $500,000 + $5,491,200 + $0) / 0.6 - $4,000,000) / 1.02 = $8,318,954 |
 | mao70 | undefined (ARV not provided) | 0.70 x ARV - rehab |  |
 | ceiling | $13,296,837 | max(MAO70, supported offer) | $13,296,837 |
 | spread_pct | 47.74% | (ceiling - ask) / ask | ($13,296,837 - $9,000,000) / $9,000,000 = 47.74% |
@@ -136,16 +137,26 @@ Every row is a full engine re-run (`runs/riverside-commons/levers.mjs` -> `lever
 2. **Defer $416,800 of developer fee** (G) or **add $416,800 of soft funds** (F). Either clears the stop with no change to debt; STRONG ADVANTAGE 76.
 3. **Cut the price to $8,318,000** (C). This clears the stop at 1.76x DSCR; STRONG ADVANTAGE 78.
 
-**If the boost covers rehab only (K):** the gap grows to $1,261,600. Upsizing the loan to the 1.25x maximum clears equity, but the score falls to 41 (PASS). The workable lever is price: the engine finds **$6,938,000** clears equity at 1.98x DSCR (STRONG ADVANTAGE, 82).
+**If the boost covers rehab only (K):** the gap grows to $1,261,600. Upsizing the loan to the 1.25x maximum clears equity, but the score falls to 41 (PASS). The workable lever is price. Under this reading the engine caps the walk-away at **$6,938,562**; at that price the deal clears equity at 1.98x DSCR (STRONG ADVANTAGE, 82).
 
 **Bond test:** the base loan is 40% of all-in cost, a stand-in for aggregate basis, which is not supplied. That fails the old 50% test. It passes a 25% test if the post-2025 threshold applies and the whole loan is tax-exempt. Reaching 50% would take about 50% LTC (scenario I: 1.33x DSCR, NEGOTIATE 56). **Counsel or the LIHTC consultant must confirm, using actual aggregate basis.**
 
-**Offer strategy**
-- **Overriding the engine offer block.** The engine suggests opening at $12,233,090 with walk-away at $13,296,837. Those figures are above the ask, because the DSCR-supported price ignores the equity constraint, which is what actually binds here. They are not usable.
-- **Opening offer: $6,938,000.** This is the price that clears equity with current sources even under the conservative boost reading.
-- **Target: $8,318,000.** This clears equity with current sources if the full boost is confirmed.
-- **Walk-away: $9,000,000 (the ask).** Go this high only if the full boost is confirmed *and* a bond-loan upsize to 43.17% LTC or a deferred fee is committed in writing.
-- **Basis:** engine equity math only. No comps support the anchor. Before the LOI, get a rent roll, T-12, unit mix, QCT/DDA confirmation and a consultant memo on the basis boost.
+**Offer strategy (engine acq2-underwrite v4.2 offer block)**
+
+The engine caps the walk-away at the lowest price constraint that applies. Binding here: **available equity**.
+
+| Price constraint | Max price |
+|---|---|
+| DSCR 1.25x floor | $13,296,837 |
+| available equity (binding) | $8,318,954 |
+| asking price | $9,000,000 |
+
+- **Opening offer: $7,653,438** (92% of walk-away).
+- **Target: $7,986,196** (96% of walk-away).
+- **Walk-away: $8,318,954.** This is the most the current capital stack can fund. Above it, the equity hard stop returns.
+- **Downside (rehab-only boost, scenario K):** the engine walk-away drops to $6,938,562 (opening $6,383,477, target $6,661,020). Get the consultant memo on the boost before submitting the LOI price.
+- **Stretch (scenario D, loan upsized to 43.17% LTC):** the engine walk-away rises to $9,000,000 (binding: asking price). Go there only with a written lender commitment.
+- **Basis:** the engine reports "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $8,318,954, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported". No comps support the anchor. Before the LOI, get a rent roll, T-12, unit mix, QCT/DDA confirmation and a consultant memo on the basis boost.
 
 ### Verification & Evidence (checks actually performed in this run)
 - HUD FY2026 MTSP income limits, Fresno CA HMFA: huduser.gov/portal/datasets/mtsp/mtsp26/HERA-Income-Limits-Report-FY26.rtf (2026-11-17 07:27 PST). ✅

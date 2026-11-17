@@ -1,6 +1,6 @@
 {
-  "engine": "acq2-underwrite v4.1",
-  "generated": "2026-11-17T15:30:49.468Z",
+  "engine": "acq2-underwrite v4.2",
+  "generated": "2026-11-17T15:50:28.130Z",
   "equity_gap": 416800,
   "solved": {
     "max_price_clearing_equity_stop": 8318000,
@@ -21,7 +21,28 @@
       "all_in": 13180000,
       "lihtc_equity": 5491200,
       "equity_required": 1916800,
-      "coc_pct": 12.160568
+      "coc_pct": 12.160568,
+      "offer": {
+        "opening": 7653438,
+        "target": 7986196,
+        "walk_away": 8318954,
+        "binding_constraint": "available_equity",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 13296837
+          },
+          {
+            "constraint": "available_equity",
+            "price": 8318954
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $8,318,954, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "B. No 130% basis boost (site not in QCT/DDA)",
@@ -36,7 +57,28 @@
       "all_in": 13180000,
       "lihtc_equity": 4224000,
       "equity_required": 3184000,
-      "coc_pct": 7.320784
+      "coc_pct": 7.320784,
+      "offer": {
+        "opening": 5748497,
+        "target": 5998431,
+        "walk_away": 6248366,
+        "binding_constraint": "available_equity",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 13296837
+          },
+          {
+            "constraint": "available_equity",
+            "price": 6248366
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $6,248,366, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "C. Price cut to clear equity stop",
@@ -49,7 +91,28 @@
       "all_in": 12484360,
       "lihtc_equity": 5491200,
       "equity_required": 1499416,
-      "coc_pct": 16.778237
+      "coc_pct": 16.778237,
+      "offer": {
+        "opening": 7652560,
+        "target": 7985280,
+        "walk_away": 8318000,
+        "binding_constraint": "asking_price",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 13296837
+          },
+          {
+            "constraint": "available_equity",
+            "price": 8318954
+          },
+          {
+            "constraint": "asking_price",
+            "price": 8318000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $8,318,954, asking price $8,318,000; binding: asking price; target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "D. Raise loan LTC to clear equity stop",
@@ -62,7 +125,28 @@
       "all_in": 13180000,
       "lihtc_equity": 5491200,
       "equity_required": 1498994,
-      "coc_pct": 13.698725
+      "coc_pct": 13.698725,
+      "offer": {
+        "opening": 8280000,
+        "target": 8640000,
+        "walk_away": 9000000,
+        "binding_constraint": "asking_price",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 12032479
+          },
+          {
+            "constraint": "available_equity",
+            "price": 9001735
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $12,032,479, available equity ($1,500,000) $9,001,735, asking price $9,000,000; binding: asking price; target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "E. Loan LTC 48% (headroom)",
@@ -75,7 +159,28 @@
       "all_in": 13180000,
       "lihtc_equity": 5491200,
       "equity_required": 862400,
-      "coc_pct": 18.90775
+      "coc_pct": 18.90775,
+      "offer": {
+        "opening": 8280000,
+        "target": 8640000,
+        "walk_away": 9000000,
+        "binding_constraint": "asking_price",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 10427103
+          },
+          {
+            "constraint": "available_equity",
+            "price": 10202112
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $10,427,103, available equity ($1,500,000) $10,202,112, asking price $9,000,000; binding: asking price; target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "F. Add soft sources equal to gap",
@@ -88,7 +193,28 @@
       "all_in": 13180000,
       "lihtc_equity": 5491200,
       "equity_required": 1500000,
-      "coc_pct": 15.539585
+      "coc_pct": 15.539585,
+      "offer": {
+        "opening": 8280000,
+        "target": 8640000,
+        "walk_away": 9000000,
+        "binding_constraint": "available_equity",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 13296837
+          },
+          {
+            "constraint": "available_equity",
+            "price": 9000000
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $9,000,000, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "G. Defer developer fee equal to gap",
@@ -101,7 +227,28 @@
       "all_in": 13180000,
       "lihtc_equity": 5491200,
       "equity_required": 1500000,
-      "coc_pct": 15.539585
+      "coc_pct": 15.539585,
+      "offer": {
+        "opening": 8280000,
+        "target": 8640000,
+        "walk_away": 9000000,
+        "binding_constraint": "available_equity",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 13296837
+          },
+          {
+            "constraint": "available_equity",
+            "price": 9000000
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $9,000,000, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "H. No boost + LTC at 1.25x max",
@@ -114,7 +261,28 @@
       "all_in": 13180000,
       "lihtc_equity": 4224000,
       "equity_required": 1431060,
-      "coc_pct": 8.152233
+      "coc_pct": 8.152233,
+      "offer": {
+        "opening": 8280000,
+        "target": 8640000,
+        "walk_away": 9000000,
+        "binding_constraint": "asking_price",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 9000312
+          },
+          {
+            "constraint": "available_equity",
+            "price": 9144729
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $9,000,312, available equity ($1,500,000) $9,144,729, asking price $9,000,000; binding: asking price; target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "I. Loan LTC 50% (bonds ~50% of all-in; legacy 50% test)",
@@ -127,7 +295,28 @@
       "all_in": 13180000,
       "lihtc_equity": 5491200,
       "equity_required": 598800,
-      "coc_pct": 24.307298
+      "coc_pct": 24.307298,
+      "offer": {
+        "opening": 8280000,
+        "target": 8640000,
+        "walk_away": 9000000,
+        "binding_constraint": "asking_price",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 9853156
+          },
+          {
+            "constraint": "available_equity",
+            "price": 10767059
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $9,853,156, available equity ($1,500,000) $10,767,059, asking price $9,000,000; binding: asking price; target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "J. Rehab +20% overrun, loan resized on new budget",
@@ -142,7 +331,28 @@
       "all_in": 13980000,
       "lihtc_equity": 5491200,
       "equity_required": 2396800,
-      "coc_pct": 8.838424
+      "coc_pct": 8.838424,
+      "offer": {
+        "opening": 6931869,
+        "target": 7233255,
+        "walk_away": 7534641,
+        "binding_constraint": "available_equity",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 12512523
+          },
+          {
+            "constraint": "available_equity",
+            "price": 7534641
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $12,512,523, available equity ($1,500,000) $7,534,641, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "K. Boost on rehab basis only (acq basis unboosted)",
@@ -157,7 +367,28 @@
       "all_in": 13180000,
       "lihtc_equity": 4646400,
       "equity_required": 2761600,
-      "coc_pct": 8.440534
+      "coc_pct": 8.440534,
+      "offer": {
+        "opening": 6383477,
+        "target": 6661020,
+        "walk_away": 6938562,
+        "binding_constraint": "available_equity",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 13296837
+          },
+          {
+            "constraint": "available_equity",
+            "price": 6938562
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $13,296,837, available equity ($1,500,000) $6,938,562, asking price $9,000,000; binding: available equity ($1,500,000); target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     },
     {
       "label": "L. K + loan LTC at 1.25x max",
@@ -170,7 +401,28 @@
       "all_in": 13180000,
       "lihtc_equity": 4646400,
       "equity_required": 1008660,
-      "coc_pct": 11.566172
+      "coc_pct": 11.566172,
+      "offer": {
+        "opening": 8280000,
+        "target": 8640000,
+        "walk_away": 9000000,
+        "binding_constraint": "asking_price",
+        "limits": [
+          {
+            "constraint": "dscr_floor",
+            "price": 9000312
+          },
+          {
+            "constraint": "available_equity",
+            "price": 10031490
+          },
+          {
+            "constraint": "asking_price",
+            "price": 9000000
+          }
+        ],
+        "basis": "walk-away = lowest of DSCR 1.25x floor $9,000,312, available equity ($1,500,000) $10,031,490, asking price $9,000,000; binding: asking price; target 96%, opening 92%; NO sourced comps, so the anchor is unsupported"
+      }
     }
   ]
 }

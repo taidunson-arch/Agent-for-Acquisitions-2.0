@@ -5,7 +5,7 @@ const dir = 'runs/riverside-commons';
 const base = JSON.parse(fs.readFileSync(dir + '/inputs.json', 'utf8')).inputs;
 const pick = (r) => ({ verdict: r.verdict, score: r.score?.total ?? null, hard_stops: (r.hard_stops||[]).map(h => h.rule),
   dscr: r.metrics?.dscr?.value, loan: r.metrics?.loan?.value, all_in: r.metrics?.all_in?.value,
-  lihtc_equity: r.metrics?.lihtc_equity?.value, equity_required: r.metrics?.equity_required?.value, coc_pct: r.metrics?.coc_pct?.value });
+  lihtc_equity: r.metrics?.lihtc_equity?.value, equity_required: r.metrics?.equity_required?.value, coc_pct: r.metrics?.coc_pct?.value, offer: r.offer });
 const run = (label, patch) => { const d = structuredClone(base); patch(d); return { label, changes: patch.toString(), ...pick(underwrite(d)) }; };
 const avail = base.availableEquity;
 // solve: lowest price change that clears the equity hard stop (bisection, engine-evaluated)
