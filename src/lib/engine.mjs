@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// ACQ/2.0 v4.1 underwriting engine. Takes Dana Inputs natively (src/lib/types.ts DealInputs, percents as whole numbers).
+// ACQ/2.0 v4.2 underwriting engine. Takes Dana Inputs natively (src/lib/types.ts DealInputs, percents as whole numbers).
 // Pure module (no Node APIs): imported by the web app (src/lib/underwrite.ts) and by the agent CLI (tools/underwrite.mjs).
 // Rule: every number an agent or the web app reports must come from this engine. Every metric has a formula and a calc string.
 
@@ -106,7 +106,7 @@ export function model(d, rs = 0, ro = 0) {
 export function underwrite(d, cfg = {}) {
   const C = { ...DEFAULTS, ...cfg, weights: { ...DEFAULTS.weights, ...(cfg.weights || {}) }, bands: { ...DEFAULTS.bands, ...(cfg.bands || {}) } };
   const v = validate(d);
-  if (v.blocking.length) return { status: 'halt', engine: 'acq2-underwrite v4.1', blocking: v.blocking, warnings: v.warnings, message: 'Critical Dana Inputs invalid; no calculations run.' };
+  if (v.blocking.length) return { status: 'halt', engine: 'acq2-underwrite v4.2', blocking: v.blocking, warnings: v.warnings, message: 'Critical Dana Inputs invalid; no calculations run.' };
   const b = model(d), m = {}, hard_stops = [], anomalies = [], floor = C.dscr_floor;
   m.closing_costs = M(b.closing, 'askingPrice x closingCostPct', usd(d.askingPrice) + ' x ' + d.closingCostPct + '% = ' + usd(b.closing));
   m.all_in = M(b.allIn, 'askingPrice + closing + rehab', usd(d.askingPrice) + ' + ' + usd(b.closing) + ' + ' + usd(b.rehab) + ' = ' + usd(b.allIn));
@@ -135,6 +135,16 @@ export function underwrite(d, cfg = {}) {
     supported = (maxLoan / (d.ltvPct / 100) - d.rehabBudget) / (1 + d.closingCostPct / 100);
     m.supported_offer = M(supported, '((NOI / (floor x 12 x PI_per_$)) / LTC - rehab) / (1 + closing%)', 'maxLoan ' + usd(maxLoan) + ' at ' + floor + 'x -> price ' + usd(supported));
   } else m.supported_offer = U('DSCR-supported price', 'NOI <= 0; no debt supportable');
+  // Equity-supported price: highest ask at which equity required <= availableEquity. Equity is linear in price:
+  // equity = (1 - LTC) x (price x (1 + closing%) + rehab) - soft - LIHTC - DDF  (LIHTC equity does not depend on price in this engine)
+  let eqSupported = null;
+  if (isNum(d.availableEquity)) {
+    const ltc = d.ltvPct / 100;
+    eqSupported = ((d.availableEquity + b.soft + b.lihtc.equity + b.ddf) / (1 - ltc) - d.rehabBudget) / (1 + d.closingCostPct / 100);
+    m.equity_supported_offer = M(eqSupported, '((availableEquity + soft + LIHTC + DDF) / (1 - LTC) - rehab) / (1 + closing%)',
+      '((' + usd(d.availableEquity) + ' + ' + usd(b.soft) + ' + ' + usd(b.lihtc.equity) + ' + ' + usd(b.ddf) + ') / ' + rd(1 - ltc, 4) + ' - ' + usd(d.rehabBudget) + ') / ' + rd(1 + d.closingCostPct / 100, 4) + ' = ' + usd(eqSupported),
+      'max price the stated equity can fund; offers are capped here');
+  } else m.equity_supported_offer = U('max price fundable with availableEquity', 'availableEquity not provided');
   const mao = isNum(d.arv) && d.arv > 0 ? 0.7 * d.arv - d.rehabBudget : null;
   m.mao70 = isNum(mao) ? M(mao, '0.70 x ARV - rehab', '0.70 x ' + usd(d.arv) + ' - ' + usd(d.rehabBudget) + ' = ' + usd(mao), 'flip heuristic; weak signal for income property') : U('0.70 x ARV - rehab', 'ARV not provided');
   const cands = [mao, supported].filter(isNum);
@@ -173,9 +183,25 @@ export function underwrite(d, cfg = {}) {
   const verdict = hard_stops.length ? 'PASS' : total >= C.bands.strong ? 'STRONG ADVANTAGE' : total < C.bands.pass_below ? 'PASS' : 'NEGOTIATE';
 
   const comps = (d.comps || []).filter(c => c.source);
-  const offer = isNum(supported) && supported > 0 ? { opening: Math.round(Math.min(ceiling, supported) * 0.92), target: Math.round(Math.min(ceiling, supported)), walk_away: Math.round(ceiling), basis: 'DSCR-supported offer at ' + floor + 'x' + (comps.length ? '; cross-check vs ' + comps.length + ' sourced comps' : '; NO sourced comps, so the anchor is unsupported') } : { unsupported: 'no positive DSCR-supported offer' };
+  // Offer = the lowest of every price constraint that applies: debt (DSCR floor), equity (available equity, when given) and the ask.
+  // v4.1 used DSCR only, so it could recommend paying above the ask or a price the capital stack could not fund.
+  const anchor = comps.length ? '; cross-check vs ' + comps.length + ' sourced comps' : '; NO sourced comps, so the anchor is unsupported';
+  const limits = [];
+  if (isNum(supported)) limits.push({ constraint: 'dscr_floor', price: supported });
+  if (isNum(eqSupported)) limits.push({ constraint: 'available_equity', price: eqSupported });
+  limits.push({ constraint: 'asking_price', price: d.askingPrice });
+  const bind = limits.reduce((a, c) => (c.price < a.price ? c : a));
+  const LABEL = { dscr_floor: 'DSCR ' + floor + 'x floor', available_equity: 'available equity (' + usd(d.availableEquity) + ')', asking_price: 'asking price' };
+  // Ladder off the binding max price: walk-away = max fundable price (never above the ask), target 96%, opening 92%.
+  // MAO70 (flip heuristic) no longer raises the walk-away above what the debt and equity can fund.
+  const offer = !isNum(supported) || supported <= 0 ? { unsupported: 'no positive DSCR-supported offer' }
+    : bind.price <= 0 ? { unsupported: 'no positive price is fundable: binding constraint ' + LABEL[bind.constraint] + ' gives ' + usd(bind.price) }
+    : { opening: Math.round(bind.price * 0.92), target: Math.round(bind.price * 0.96), walk_away: Math.round(bind.price), binding_constraint: bind.constraint,
+        limits: limits.map(l => ({ constraint: l.constraint, price: Math.round(l.price) })),
+        basis: 'walk-away = lowest of ' + limits.map(l => LABEL[l.constraint] + ' ' + usd(l.price)).join(', ') + '; binding: ' + LABEL[bind.constraint] + '; target 96%, opening 92%'
+          + (isNum(d.availableEquity) ? '' : '; equity constraint NOT evaluated (availableEquity not provided)') + anchor };
 
-  return { status: 'ok', engine: 'acq2-underwrite v4.1', config: { dscr_floor: floor, weights: C.weights, bands: C.bands },
+  return { status: 'ok', engine: 'acq2-underwrite v4.2', config: { dscr_floor: floor, weights: C.weights, bands: C.bands },
     warnings: v.warnings, placeholders: v.placeholders, metrics: m,
     stress: { rent_steps: C.rent_steps, rehab_steps: C.rehab_steps, cells },
     score: { components: Object.fromEntries(Object.entries(comp).map(([k2, x]) => [k2, Math.round(x)])), weights_used: Object.fromEntries(Object.keys(comp).map(k2 => [k2, rd(C.weights[k2] / ws, 4)])), total },

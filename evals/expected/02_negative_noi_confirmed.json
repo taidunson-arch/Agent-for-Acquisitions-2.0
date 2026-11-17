@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "engine": "acq2-underwrite v4.1",
+  "engine": "acq2-underwrite v4.2",
   "config": {
     "dscr_floor": 1.25,
     "weights": {
@@ -115,6 +115,12 @@
       "value": null,
       "formula": "DSCR-supported price",
       "undefined_reason": "NOI <= 0; no debt supportable"
+    },
+    "equity_supported_offer": {
+      "value": 8361344.537815,
+      "formula": "((availableEquity + soft + LIHTC + DDF) / (1 - LTC) - rehab) / (1 + closing%)",
+      "calc": "(($3,300,000 + $0 + $0 + $0) / 0.35 - $900,000) / 1.02 = $8,361,345",
+      "note": "max price the stated equity can fund; offers are capped here"
     },
     "mao70": {
       "value": 5050000,
