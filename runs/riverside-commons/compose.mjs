@@ -197,7 +197,9 @@ tableL(['Check', 'Source', 'When', 'Result'], [
   ['Sales comps', 'n/a', 'n/a', 'Not performed: no data source'],
 ]);
 p('', 'No confidence percentage is stated because none was computed.', '');
-p('### D. Reproduce', '');
+p('### D. Check the math in Excel', '');
+p(code('riverside-commons_model.xlsx') + ' (same folder as this report) recomputes every metric, the score, verdict, offer, the 20-cell stress grid and the HUD rent limits with live Excel formulas. Each sits next to the engine value with an OK/CHECK status. Blue cells are inputs: change one and the formulas recalculate. Built with ' + code('tools/export_xlsx.mjs') + ' and recalculated in Microsoft Excel before saving.', '');
+p('### E. Reproduce', '');
 p(code('node tools/underwrite.mjs runs/riverside-commons/inputs.json --out runs/riverside-commons/results.json') + ', then ' + code('node runs/riverside-commons/levers.mjs') + ', ' + code('node runs/riverside-commons/ami_rents.mjs') + ' and ' + code('node runs/riverside-commons/compose.mjs') + '.', '');
 p('*Prepared under the Acquisitions Desk Agent v4 run contract (' + code('agent.v4.yaml') + ') in house style (' + code('docs/REPORT_STYLE.md') + '). This run was executed by the OpenClaw main agent, not the configured model. Generated ' + new Date().toISOString() + '.*');
 fs.mkdirSync(R, { recursive: true });

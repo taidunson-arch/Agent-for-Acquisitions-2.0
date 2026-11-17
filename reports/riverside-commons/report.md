@@ -287,8 +287,12 @@ Other data-quality notes:
 
 No confidence percentage is stated because none was computed.
 
-### D. Reproduce
+### D. Check the math in Excel
+
+`riverside-commons_model.xlsx` (same folder as this report) recomputes every metric, the score, verdict, offer, the 20-cell stress grid and the HUD rent limits with live Excel formulas. Each sits next to the engine value with an OK/CHECK status. Blue cells are inputs: change one and the formulas recalculate. Built with `tools/export_xlsx.mjs` and recalculated in Microsoft Excel before saving.
+
+### E. Reproduce
 
 `node tools/underwrite.mjs runs/riverside-commons/inputs.json --out runs/riverside-commons/results.json`, then `node runs/riverside-commons/levers.mjs`, `node runs/riverside-commons/ami_rents.mjs` and `node runs/riverside-commons/compose.mjs`.
 
-*Prepared under the Acquisitions Desk Agent v4 run contract (`agent.v4.yaml`) in house style (`docs/REPORT_STYLE.md`). This run was executed by the OpenClaw main agent, not the configured model. Generated 2026-11-17T16:01:31.822Z.*
+*Prepared under the Acquisitions Desk Agent v4 run contract (`agent.v4.yaml`) in house style (`docs/REPORT_STYLE.md`). This run was executed by the OpenClaw main agent, not the configured model. Generated 2026-11-17T16:11:38.448Z.*
