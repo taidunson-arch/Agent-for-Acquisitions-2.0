@@ -1,0 +1,41 @@
+{
+  "deal": "Portland 68-Door New Construction Portfolio (Bodle)",
+  "notes": [
+    "Three buildings: 2465 NE Alberta St (34 doors: 32 apts + 2 retail, 2025, 0/34 occupied), 3727 S Hood Ave (18 micro-units, 2024, 18/18 incl. 2 Airbnb units), 11 NE 55th Ave (16 units, 2025, 7/15 leased). Ask $15,949,700; broker pro forma NOI $930,998 (5.84% blended cap).",
+    "Broker pro forma: total gross income $1,342,219 (rents $1,221,888 + billbacks/fees/misc $120,331), vacancy 3.9%, opex $363,772 (28% of EGI; Alberta at 24.8% / $5,505 per unit).",
+    "Normalized: remove Airbnb premium ($24K), late fees ($6K) and half of unexplained Alberta misc income ($18K); 7% economic loss for lease-up, concessions and bad debt; opex rebuilt at $6,850/unit Alberta, ~$5,900/unit Hood and Tabor incl. reserves, realistic insurance and admin = $433K (36% of EGI).",
+    "LIHTC conversion (for-profit): 60% AMI 2026 caps (studio $1,347, 1BR $1,443, 2BR $1,732 gross) less utility allowances trim ~$66K/yr of rent on the 1BR/2BR units; +$25K compliance cost; NO acquisition credits because all three buildings were placed in service within 10 years (IRC 42(d)(2)(B)(ii)) and there is no rehab basis.",
+    "Nonprofit affordable ownership: same restricted rents but ORS 307.540/541 property-tax exemption removes ~$153K/yr of taxes. Available only to a 501(c)(3)/(4) owner approved by Portland Housing Bureau.",
+    "Debt for all scenarios: 65% LTC conventional at 6.625% / 30-yr. Capital budget = $250K lease-up concessions and retail TI reserve. Closing 2%.",
+    "ARV = normalized NOI capitalized at 6.0% (Portland 2026 market average 5.9% to 6.2%)."
+  ],
+  "common": {
+    "id": "pdx-68-portfolio",
+    "dealName": "Portland 68-Door Portfolio",
+    "address": "2465 NE Alberta St / 3727 S Hood Ave / 11 NE 55th Ave, Portland, OR",
+    "market": "Portland, OR",
+    "assetType": "mixeduse",
+    "askingPrice": 15949700,
+    "units": 68,
+    "rehabBudget": 250000,
+    "closingCostPct": 2,
+    "ancillaryPct": 0,
+    "ltvPct": 65,
+    "ratePct": 6.625,
+    "amortYears": 30
+  },
+  "scenarios": [
+    { "key": "broker", "label": "Broker pro forma as presented",
+      "description": "All 68 doors at pro forma rents including vacant Alberta and Tabor units, Airbnb income, 3.9% vacancy, 28% opex.",
+      "inputs": { "currentRent": 1645, "marketRent": 1645, "vacancyPct": 3.9, "opexRatioPct": 28.2, "arv": 15949700 } },
+    { "key": "normalized", "label": "Normalized market-rate underwriting",
+      "description": "Airbnb and fee income removed, 7% economic loss through lease-up, opex rebuilt to $433K with reserves.",
+      "inputs": { "currentRent": 1586, "marketRent": 1620, "vacancyPct": 7, "opexRatioPct": 36, "arv": 12800000 } },
+    { "key": "lihtc", "label": "LIHTC conversion, for-profit owner (no credits)",
+      "description": "Rents capped at 60% AMI net of utility allowance, 5% vacancy on waitlist demand, +$25K compliance; no tax exemption; zero acquisition credits under the 10-year rule.",
+      "inputs": { "currentRent": 1505, "marketRent": 1505, "vacancyPct": 5, "opexRatioPct": 39.2, "arv": 11900000 } },
+    { "key": "nonprofit", "label": "Nonprofit affordable ownership with tax exemption",
+      "description": "Same restricted rents; property tax removed under ORS 307.540; compliance added. Requires 501(c)(3) owner and PHB approval.",
+      "inputs": { "currentRent": 1505, "marketRent": 1505, "vacancyPct": 5, "opexRatioPct": 26.1, "arv": 14300000 } }
+  ]
+}
