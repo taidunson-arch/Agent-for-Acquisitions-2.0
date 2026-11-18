@@ -1,0 +1,58 @@
+{
+  "deal": "Eastgate Station",
+  "notes": [
+    "61-unit LIHTC family community, built 2010, Hazelwood (East Portland). 60 of 61 units income-restricted; 18 units carry Home Forward project-based vouchers; 13 HUD-subsidized wheelchair-accessible units.",
+    "Asking price $3,936,580 = assumed Portland Housing Bureau loan (~$1.98M at 0%) + assumed NOAH loan (~$1.25M at 2.75%) + ~$700K cash to close, per the listing brokers' public post. Not verified against the OM (LoopNet CDN blocked this session).",
+    "No T-12 or rent roll available. Rents, vacancy and opex are analyst estimates from public rent listings, 2026 Portland MSA MTSP limits (4-person MFI $128,300), Hazelwood market rents, and OHCS FY24 portfolio expense data ($8,198/unit statewide, Portland Metro higher).",
+    "Debt is modeled as the assumed balances: LTC = $3.23M / all-in; blended rate 1.064% (PHB 0% + NOAH 2.75%), 30-yr amortization. This treats the PHB loan as amortizing, which is the conservative case; if it is deferred/residual-receipts, annual debt service falls by ~$66K.",
+    "ARV = restricted-asset value: scenario NOI capitalized at a 7.5% restricted cap (mission-buyer market). Market-rate value (~$200K/unit) is irrelevant because the extended use agreement likely runs to ~2070.",
+    "Rehab budget = $400K near-term capital needs placeholder for a 16-year-old wood-frame building (exterior paint/envelope, water heaters, HVAC, flooring). Replace with PCNA figure."
+  ],
+  "common": {
+    "id": "eastgate-station",
+    "dealName": "Eastgate Station",
+    "address": "100 NE 120th Ave, Portland, OR 97220",
+    "market": "Portland, OR",
+    "assetType": "multifamily",
+    "askingPrice": 3936580,
+    "units": 61,
+    "rehabBudget": 400000,
+    "closingCostPct": 2.5,
+    "ancillaryPct": 2,
+    "ltvPct": 72.83,
+    "ratePct": 1.064,
+    "amortYears": 30
+  },
+  "scenarios": [
+    {
+      "key": "base",
+      "label": "Base — assumed subsidized debt",
+      "description": "Blended collected rent $1,400/unit (restricted + PBV units), 8% vacancy & bad debt, opex $9,800/unit incl. $400 reserves.",
+      "inputs": { "currentRent": 1400, "marketRent": 1480, "vacancyPct": 8, "opexRatioPct": 62.2, "arv": 4850000 }
+    },
+    {
+      "key": "downside",
+      "label": "Downside — OHCS portfolio-average performance",
+      "description": "Collected rent $1,150/unit, 10% economic loss, opex $10,500/unit. Approximates OHCS FY24 statewide averages.",
+      "inputs": { "currentRent": 1150, "marketRent": 1250, "vacancyPct": 10, "opexRatioPct": 82.9, "arv": 1800000 }
+    },
+    {
+      "key": "upside",
+      "label": "Upside — PBV rents at payment standard",
+      "description": "Collected rent $1,550/unit with 18 PBV units at Home Forward reasonable rent, 6% loss, opex $9,200/unit.",
+      "inputs": { "currentRent": 1550, "marketRent": 1600, "vacancyPct": 6, "opexRatioPct": 51.6, "arv": 6900000 }
+    },
+    {
+      "key": "taxable",
+      "label": "Base — for-profit buyer loses property tax exemption",
+      "description": "Base case plus ~$100K/yr property tax if the ORS 307.540 nonprofit exemption is lost on transfer.",
+      "inputs": { "currentRent": 1400, "marketRent": 1480, "vacancyPct": 8, "opexRatioPct": 72.6, "arv": 3500000 }
+    },
+    {
+      "key": "conventional",
+      "label": "Counterfactual — conventional debt, no assumption",
+      "description": "Base operations financed with a 65% LTC agency loan at 6.625% instead of assuming the PHB/NOAH debt.",
+      "inputs": { "currentRent": 1400, "marketRent": 1480, "vacancyPct": 8, "opexRatioPct": 62.2, "arv": 4850000, "ltvPct": 65, "ratePct": 6.625 }
+    }
+  ]
+}

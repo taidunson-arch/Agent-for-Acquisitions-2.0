@@ -1,0 +1,2239 @@
+[
+  {
+    "key": "base",
+    "label": "Base — assumed subsidized debt",
+    "errors": {},
+    "report": {
+      "inputs": {
+        "id": "eastgate-station-base",
+        "dealName": "Eastgate Station",
+        "address": "100 NE 120th Ave, Portland, OR 97220",
+        "market": "Portland, OR",
+        "assetType": "multifamily",
+        "askingPrice": 3936580,
+        "units": 61,
+        "rehabBudget": 400000,
+        "closingCostPct": 2.5,
+        "ancillaryPct": 2,
+        "ltvPct": 72.83,
+        "ratePct": 1.064,
+        "amortYears": 30,
+        "currentRent": 1400,
+        "marketRent": 1480,
+        "vacancyPct": 8,
+        "opexRatioPct": 62.2,
+        "arv": 4850000
+      },
+      "refNo": "DDAR-2026-ONBASE",
+      "generatedAt": 1794975350918,
+      "verdict": "STRONG ADVANTAGE",
+      "verdictLine": "Asymmetric entry — the underwrite clears every gate with margin to spare. Move fast, paper clean.",
+      "scores": {
+        "spread": 100,
+        "dscr": 100,
+        "cap": 100,
+        "coc": 100,
+        "total": 100
+      },
+      "confidence": 0.8966145068476908,
+      "m": {
+        "closingCosts": 98414.5,
+        "rehab": 400000,
+        "allIn": 4434994.5,
+        "equity": 1204988.0056500002,
+        "loan": 3230006.49435,
+        "pgi": 1024800,
+        "vacancyLoss": 81984,
+        "ancillary": 18856.32,
+        "egi": 961672.32,
+        "opex": 598160.18304,
+        "noi": 363512.1369599999,
+        "monthlyPI": 10484.205058136333,
+        "ads": 125810.460697636,
+        "cashFlowAnnual": 237701.6762623639,
+        "cashFlowMonthly": 19808.473021863658,
+        "goingInCap": 8.196450682407834,
+        "stabNOI": 384284.25907200004,
+        "stabCap": 8.664819292831142,
+        "dscr": 2.88936337204614,
+        "coc": 19.72647654149402,
+        "mao70": 2995000,
+        "supportedOffer": 9611169.298361825,
+        "ceiling": 9611169.298361825,
+        "spread": 5674589.298361825,
+        "spreadPct": 144.15023442586775,
+        "pricePerUnit": 64534.098360655735,
+        "grm": 3.8413153786104606,
+        "breakEvenOcc": 0.6925986933247961,
+        "rentGapPct": 5.714285714285714,
+        "ltc": 72.83
+      },
+      "offer": {
+        "opening": 8842276,
+        "target": 9611169,
+        "ceiling": 9611169,
+        "credits": 60000
+      },
+      "levers": [
+        {
+          "kind": "upside",
+          "title": "Below-ceiling entry",
+          "detail": "Asking basis sits 144.2% under the agent's max supportable ceiling — instant day-one equity if the number holds.",
+          "impact": "+$5.67M vs ceiling"
+        },
+        {
+          "kind": "upside",
+          "title": "Expense recapture",
+          "detail": "Opex ratio of 62% runs hot versus the 36–38% market band. RUBS, tax appeal and contract rebids are the usual levers.",
+          "impact": "≈$233K/yr at 38%"
+        },
+        {
+          "kind": "upside",
+          "title": "Ancillary income stack",
+          "detail": "Pet rent, storage, reserved parking and utility bill-back are under-penetrated at this basis.",
+          "impact": "+3–5% EGI"
+        },
+        {
+          "kind": "execution",
+          "title": "Light value-add scope",
+          "detail": "Rehab lands at $7K/door — cosmetic scope only, no structural or deferred-system risk priced in.",
+          "impact": "$7K/door"
+        }
+      ],
+      "matrix": [
+        [
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0,
+            "coc": 17.313093933497605,
+            "dscr": 2.6582143022824494
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.1,
+            "coc": 17.065014075594238,
+            "dscr": 2.634453698310467
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.2,
+            "coc": 16.821329879442455,
+            "dscr": 2.6111141022306894
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.3,
+            "coc": 16.581925542616993,
+            "dscr": 2.5881844227131343
+          }
+        ],
+        [
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0,
+            "coc": 18.519785237495817,
+            "dscr": 2.7737888371642954
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.1,
+            "coc": 18.260919298814045,
+            "dscr": 2.7489951634544005
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.2,
+            "coc": 18.006640137612184,
+            "dscr": 2.724640802327676
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.3,
+            "coc": 17.75682691657692,
+            "dscr": 2.700714180222401
+          }
+        ],
+        [
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0,
+            "coc": 19.72647654149402,
+            "dscr": 2.88936337204614
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.1,
+            "coc": 19.456824522033838,
+            "dscr": 2.8635366285983332
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.2,
+            "coc": 19.1919503957819,
+            "dscr": 2.8381675024246618
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.3,
+            "coc": 18.93172829053683,
+            "dscr": 2.813243937731667
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0,
+            "coc": 20.93316784549223,
+            "dscr": 3.004937906927986
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.1,
+            "coc": 20.65272974525364,
+            "dscr": 2.978078093742267
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.2,
+            "coc": 20.377260653951627,
+            "dscr": 2.951694202521648
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.3,
+            "coc": 20.106629664496754,
+            "dscr": 2.925773695240934
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0,
+            "coc": 22.13985914949044,
+            "dscr": 3.1205124418098316
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.1,
+            "coc": 21.84863496847344,
+            "dscr": 3.0926195588862004
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.2,
+            "coc": 21.562570912121352,
+            "dscr": 3.065220902618635
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.3,
+            "coc": 21.281531038456677,
+            "dscr": 3.038303452750201
+          }
+        ]
+      ],
+      "rentDeltas": [
+        -0.08,
+        -0.04,
+        0,
+        0.04,
+        0.08
+      ],
+      "rehabDeltas": [
+        0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "comps": [
+        {
+          "address": "1614 Loomis St",
+          "distanceMi": 0.6,
+          "pricePerUnit": 68000,
+          "cap": 6.6,
+          "period": "Q3 25"
+        },
+        {
+          "address": "1269 Harrow Ave",
+          "distanceMi": 0.7,
+          "pricePerUnit": 62500,
+          "cap": 6.2,
+          "period": "Q2 26"
+        },
+        {
+          "address": "2040 Dockside Rd",
+          "distanceMi": 0.8,
+          "pricePerUnit": 60500,
+          "cap": 6,
+          "period": "Q2 26"
+        },
+        {
+          "address": "881 Meridian Way",
+          "distanceMi": 1.6,
+          "pricePerUnit": 66000,
+          "cap": 5.1,
+          "period": "Q3 25"
+        }
+      ],
+      "narrative": [
+        "Eastgate Station at 100 NE 120th Ave, Portland, OR 97220 presents at $3.94M — $65K/door against a $64K/door comp set across Portland, OR. The agent's support ceiling lands at $9.61M, putting the ask 144.2% below the number the math can defend. ARV of $4.85M leaves $415K of value-add headroom against the $4.43M all-in basis.",
+        "In-place rents of $1K/mo run 6% under market. At 62% opex and 8% vacancy the asset throws $364K NOI going in (8.2% cap) and $384K stabilized (8.7%). On the proposed $3.23M senior facility at 1.06%, coverage prints at 2.89× DSCR and levered return at 19.7% cash-on-cash — $20K/mo to the sponsor.",
+        "Recommendation: move to LOI. Open at $8.84M, anchor on the comp set, and target $9.61M with $60K in closing/rehab credits. Hard ceiling $9.61M — beyond that the DSCR floor and sponsor return both fail the committee test."
+      ],
+      "verification": {
+        "primarySources": [
+          {
+            "name": "Offering Memorandum",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "Rent Roll",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "T-12 Operating Statements",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          }
+        ],
+        "externalChecks": [
+          {
+            "source": "County Assessor Records",
+            "url": "https://assessor.portland,.or.gov",
+            "checkedAt": "2026-11-18",
+            "result": "Parcel ID verified, ownership confirmed"
+          },
+          {
+            "source": "FEMA Flood Maps",
+            "url": "https://msc.fema.gov/portal",
+            "checkedAt": "2026-11-18",
+            "result": "No AE/VE zones detected"
+          },
+          {
+            "source": "CoStar Comp Scan",
+            "checkedAt": "2026-11-18",
+            "result": "4 arms-length comps within 2mi / 180-day window"
+          }
+        ],
+        "items": [
+          {
+            "item": "Document reconciliation sweep",
+            "status": "verified",
+            "source": "OM vs rent roll vs T-12",
+            "note": "All sources tie"
+          },
+          {
+            "item": "Unit count matches across OM, rent roll, T-12",
+            "status": "verified",
+            "source": "reconciliation sweep",
+            "note": "61 doors consistent"
+          },
+          {
+            "item": "Asking price",
+            "status": "verified",
+            "source": "LOI / broker email",
+            "note": "$3,936,580"
+          },
+          {
+            "item": "Market rent assumption",
+            "status": "flagged",
+            "source": "broker pro forma",
+            "note": "Underwritten at $1480/mo — verify against lease-up velocity"
+          },
+          {
+            "item": "Opex ratio",
+            "status": "verified",
+            "source": "T-12 actuals",
+            "note": "62% — within Sun Belt value-add band"
+          },
+          {
+            "item": "Interest rate assumption",
+            "status": "flagged",
+            "source": "agency quote sheet",
+            "note": "1.06% — current as of 2026-11-18, re-quote before LOI"
+          },
+          {
+            "item": "Rehab budget",
+            "status": "not_performed",
+            "source": "GC estimate pending",
+            "note": "$/door sanity check passed — detailed scope review required"
+          }
+        ],
+        "confidenceZones": [
+          {
+            "zone": "high",
+            "fields": [
+              "asking_price",
+              "unit_count",
+              "in_place_rents",
+              "opex_actuals"
+            ],
+            "reason": "Source documents agree; arithmetic reconciles"
+          },
+          {
+            "zone": "medium",
+            "fields": [
+              "market_rent",
+              "exit_cap",
+              "lease_up_velocity"
+            ],
+            "reason": "Broker pro forma — directionally sound but unverified by third party"
+          },
+          {
+            "zone": "low",
+            "fields": [
+              "rehab_budget",
+              "insurance_expense",
+              "tax_reassessment"
+            ],
+            "reason": "Requires GC walk, insurance quote, and assessor confirmation"
+          }
+        ],
+        "overallConfidence": 0.8966145068476908
+      },
+      "reconciliation": [
+        {
+          "field": "unit_count",
+          "omValue": 61,
+          "rentRollValue": 61,
+          "t12Value": 61,
+          "matches": true
+        },
+        {
+          "field": "asking_price",
+          "omValue": 3936580,
+          "rentRollValue": 3936580,
+          "t12Value": 3936580,
+          "matches": true
+        }
+      ],
+      "sponsor": {
+        "name": "Eastgate",
+        "notes": "Limited transaction history in subject market — enhanced diligence recommended"
+      },
+      "portfolioConcentration": [
+        {
+          "market": "Portland, OR",
+          "assetType": "multifamily",
+          "currentCount": 1,
+          "fundLimit": 5,
+          "withinLimit": true
+        },
+        {
+          "market": "All Markets",
+          "assetType": "multifamily",
+          "currentCount": 2,
+          "fundLimit": 8,
+          "withinLimit": true
+        }
+      ],
+      "assumptionFreshness": [
+        {
+          "assumption": "senior_debt_rate",
+          "modeledValue": 1.064,
+          "currentValue": 6.625,
+          "variancePct": -83.93962264150943,
+          "stale": true,
+          "source": "Freddie Mac Multifamily Quote Sheet"
+        }
+      ],
+      "buyBoxVersion": "meridian-mf-vadd-q1-2026"
+    }
+  },
+  {
+    "key": "downside",
+    "label": "Downside — OHCS portfolio-average performance",
+    "errors": {
+      "opexRatioPct": "20–70%"
+    },
+    "report": {
+      "inputs": {
+        "id": "eastgate-station-downside",
+        "dealName": "Eastgate Station",
+        "address": "100 NE 120th Ave, Portland, OR 97220",
+        "market": "Portland, OR",
+        "assetType": "multifamily",
+        "askingPrice": 3936580,
+        "units": 61,
+        "rehabBudget": 400000,
+        "closingCostPct": 2.5,
+        "ancillaryPct": 2,
+        "ltvPct": 72.83,
+        "ratePct": 1.064,
+        "amortYears": 30,
+        "currentRent": 1150,
+        "marketRent": 1250,
+        "vacancyPct": 10,
+        "opexRatioPct": 82.9,
+        "arv": 1800000
+      },
+      "refNo": "DDAR-2026-WNSIDE",
+      "generatedAt": 1794975350919,
+      "verdict": "PASS",
+      "verdictLine": "Basis is too high for the risk-adjusted return. Monitor for a reprice — do not chase.",
+      "scores": {
+        "spread": 0,
+        "dscr": 25,
+        "cap": 0,
+        "coc": 21,
+        "total": 10
+      },
+      "confidence": 0.9299795699841343,
+      "m": {
+        "closingCosts": 98414.5,
+        "rehab": 400000,
+        "allIn": 4434994.5,
+        "equity": 1204988.0056500002,
+        "loan": 3230006.49435,
+        "pgi": 841800,
+        "vacancyLoss": 84180,
+        "ancillary": 15152.4,
+        "egi": 772772.4,
+        "opex": 640628.3196,
+        "noi": 132144.08039999998,
+        "monthlyPI": 10484.205058136333,
+        "ads": 125810.460697636,
+        "cashFlowAnnual": 6333.619702363983,
+        "cashFlowMonthly": 527.8016418636653,
+        "goingInCap": 2.9795770975589706,
+        "stabNOI": 143634.86999999994,
+        "stabCap": 3.2386707582162715,
+        "dscr": 1.0503425523382015,
+        "coc": 0.5256168254510943,
+        "mao70": 860000,
+        "supportedOffer": 3245473.9065255695,
+        "ceiling": 3245473.9065255695,
+        "spread": -691106.0934744305,
+        "spreadPct": -17.55600276063056,
+        "pricePerUnit": 64534.098360655735,
+        "grm": 4.676383939177952,
+        "breakEvenOcc": 0.8926236266562735,
+        "rentGapPct": 8.695652173913043,
+        "ltc": 72.83
+      },
+      "offer": {
+        "opening": 2985836,
+        "target": 3245474,
+        "ceiling": 3245474,
+        "credits": 60000
+      },
+      "levers": [
+        {
+          "kind": "upside",
+          "title": "Mark-to-market rent lift",
+          "detail": "In-place rents trail market by 9%. Rolling leases to $1K/mo over 12–18 months drives the stabilized yield.",
+          "impact": "+$6K/mo at stab."
+        },
+        {
+          "kind": "upside",
+          "title": "Expense recapture",
+          "detail": "Opex ratio of 83% runs hot versus the 36–38% market band. RUBS, tax appeal and contract rebids are the usual levers.",
+          "impact": "≈$347K/yr at 38%"
+        },
+        {
+          "kind": "upside",
+          "title": "Ancillary income stack",
+          "detail": "Pet rent, storage, reserved parking and utility bill-back are under-penetrated at this basis.",
+          "impact": "+3–5% EGI"
+        },
+        {
+          "kind": "execution",
+          "title": "Light value-add scope",
+          "detail": "Rehab lands at $7K/door — cosmetic scope only, no structural or deferred-system risk priced in.",
+          "impact": "$7K/door"
+        },
+        {
+          "kind": "risk",
+          "title": "Coverage runs thin",
+          "detail": "DSCR of 1.05× sits under the 1.25× agency floor — lender stress tests will haircut proceeds or price.",
+          "impact": "DSCR 1.05×"
+        },
+        {
+          "kind": "risk",
+          "title": "High break-even occupancy",
+          "detail": "Debt service is covered only above 89% occupancy. A soft leasing season eats cash flow fast.",
+          "impact": "BE 89%"
+        }
+      ],
+      "matrix": [
+        [
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0,
+            "coc": -0.3516970052618977,
+            "dscr": 0.9663151481511446
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.1,
+            "coc": -0.44187909646401563,
+            "dscr": 0.9576776836970439
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.2,
+            "coc": -0.5304632749120484,
+            "dscr": 0.9491932642037573
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.3,
+            "coc": -0.6174916371508963,
+            "dscr": 0.9408578577464828
+          }
+        ],
+        [
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0,
+            "coc": 0.08695991009460795,
+            "dscr": 1.008328850244674
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.1,
+            "coc": -0.007143141594558725,
+            "dscr": 0.9993158438577863
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.2,
+            "coc": -0.09957880606207127,
+            "dscr": 0.9904625365604437
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.3,
+            "coc": -0.19039101013739093,
+            "dscr": 0.981764721126766
+          }
+        ],
+        [
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0,
+            "coc": 0.5256168254510943,
+            "dscr": 1.0503425523382015
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.1,
+            "coc": 0.42759281327487914,
+            "dscr": 1.0409540040185268
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.2,
+            "coc": 0.33130566278788687,
+            "dscr": 1.0317318089171283
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.3,
+            "coc": 0.23670961687609557,
+            "dscr": 1.0226715845070473
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0,
+            "coc": 0.9642737408075805,
+            "dscr": 1.0923562544317291
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.1,
+            "coc": 0.8623287681443169,
+            "dscr": 1.0825921641792673
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.2,
+            "coc": 0.7621901316378451,
+            "dscr": 1.0730010812738129
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.3,
+            "coc": 0.6638102438895821,
+            "dscr": 1.0635784478873287
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0,
+            "coc": 1.4029306561640764,
+            "dscr": 1.1343699565252574
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.1,
+            "coc": 1.2970647230137642,
+            "dscr": 1.124230324340009
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.2,
+            "coc": 1.1930746004878126,
+            "dscr": 1.1142703536304985
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.3,
+            "coc": 1.090910870903078,
+            "dscr": 1.1044853112676112
+          }
+        ]
+      ],
+      "rentDeltas": [
+        -0.08,
+        -0.04,
+        0,
+        0.04,
+        0.08
+      ],
+      "rehabDeltas": [
+        0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "comps": [
+        {
+          "address": "1932 Meridian Way",
+          "distanceMi": 0.9,
+          "pricePerUnit": 68000,
+          "cap": 5,
+          "period": "Q4 25"
+        },
+        {
+          "address": "1520 Bellview Dr",
+          "distanceMi": 1.4,
+          "pricePerUnit": 59000,
+          "cap": 6.2,
+          "period": "Q3 25"
+        },
+        {
+          "address": "2723 Harrow Ave",
+          "distanceMi": 1.6,
+          "pricePerUnit": 62000,
+          "cap": 5.3,
+          "period": "Q2 26"
+        },
+        {
+          "address": "2386 Kessler Blvd",
+          "distanceMi": 1.9,
+          "pricePerUnit": 67500,
+          "cap": 5.1,
+          "period": "Q1 26"
+        }
+      ],
+      "narrative": [
+        "Eastgate Station at 100 NE 120th Ave, Portland, OR 97220 presents at $3.94M — $65K/door against a $64K/door comp set across Portland, OR. The agent's support ceiling lands at $3.25M, putting the ask 17.6% above the number the math can defend. ARV of $1.80M sits under the all-in basis — the plan must create value, not just capture it.",
+        "In-place rents of $1K/mo run 9% under market — the mark-to-market lift is the engine of this business plan. At 83% opex and 10% vacancy the asset throws $132K NOI going in (3.0% cap) and $144K stabilized (3.2%). On the proposed $3.23M senior facility at 1.06%, coverage prints at 1.05× DSCR and levered return at 0.5% cash-on-cash — $528/mo to the sponsor.",
+        "Recommendation: pass and hold the relationship. The ceiling of $3.25M is $691K under ask; only a motivated-seller reprice or a material opex discovery reopens this file. Agent will keep the deal on the watchlist and re-score if the basis moves 10%+."
+      ],
+      "verification": {
+        "primarySources": [
+          {
+            "name": "Offering Memorandum",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "Rent Roll",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "T-12 Operating Statements",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          }
+        ],
+        "externalChecks": [
+          {
+            "source": "County Assessor Records",
+            "url": "https://assessor.portland,.or.gov",
+            "checkedAt": "2026-11-18",
+            "result": "Parcel ID verified, ownership confirmed"
+          },
+          {
+            "source": "FEMA Flood Maps",
+            "url": "https://msc.fema.gov/portal",
+            "checkedAt": "2026-11-18",
+            "result": "No AE/VE zones detected"
+          },
+          {
+            "source": "CoStar Comp Scan",
+            "checkedAt": "2026-11-18",
+            "result": "4 arms-length comps within 2mi / 180-day window"
+          }
+        ],
+        "items": [
+          {
+            "item": "Document reconciliation sweep",
+            "status": "verified",
+            "source": "OM vs rent roll vs T-12",
+            "note": "All sources tie"
+          },
+          {
+            "item": "Unit count matches across OM, rent roll, T-12",
+            "status": "verified",
+            "source": "reconciliation sweep",
+            "note": "61 doors consistent"
+          },
+          {
+            "item": "Asking price",
+            "status": "verified",
+            "source": "LOI / broker email",
+            "note": "$3,936,580"
+          },
+          {
+            "item": "Market rent assumption",
+            "status": "flagged",
+            "source": "broker pro forma",
+            "note": "Underwritten at $1250/mo — verify against lease-up velocity"
+          },
+          {
+            "item": "Opex ratio",
+            "status": "verified",
+            "source": "T-12 actuals",
+            "note": "83% — within Sun Belt value-add band"
+          },
+          {
+            "item": "Interest rate assumption",
+            "status": "flagged",
+            "source": "agency quote sheet",
+            "note": "1.06% — current as of 2026-11-18, re-quote before LOI"
+          },
+          {
+            "item": "Rehab budget",
+            "status": "not_performed",
+            "source": "GC estimate pending",
+            "note": "$/door sanity check passed — detailed scope review required"
+          }
+        ],
+        "confidenceZones": [
+          {
+            "zone": "high",
+            "fields": [
+              "asking_price",
+              "unit_count",
+              "in_place_rents",
+              "opex_actuals"
+            ],
+            "reason": "Source documents agree; arithmetic reconciles"
+          },
+          {
+            "zone": "medium",
+            "fields": [
+              "market_rent",
+              "exit_cap",
+              "lease_up_velocity"
+            ],
+            "reason": "Broker pro forma — directionally sound but unverified by third party"
+          },
+          {
+            "zone": "low",
+            "fields": [
+              "rehab_budget",
+              "insurance_expense",
+              "tax_reassessment"
+            ],
+            "reason": "Requires GC walk, insurance quote, and assessor confirmation"
+          }
+        ],
+        "overallConfidence": 0.9299795699841343
+      },
+      "reconciliation": [
+        {
+          "field": "unit_count",
+          "omValue": 61,
+          "rentRollValue": 61,
+          "t12Value": 61,
+          "matches": true
+        },
+        {
+          "field": "asking_price",
+          "omValue": 3936580,
+          "rentRollValue": 3936580,
+          "t12Value": 3936580,
+          "matches": true
+        }
+      ],
+      "sponsor": {
+        "name": "Eastgate",
+        "notes": "Limited transaction history in subject market — enhanced diligence recommended"
+      },
+      "portfolioConcentration": [
+        {
+          "market": "Portland, OR",
+          "assetType": "multifamily",
+          "currentCount": 1,
+          "fundLimit": 5,
+          "withinLimit": true
+        },
+        {
+          "market": "All Markets",
+          "assetType": "multifamily",
+          "currentCount": 2,
+          "fundLimit": 8,
+          "withinLimit": true
+        }
+      ],
+      "assumptionFreshness": [
+        {
+          "assumption": "senior_debt_rate",
+          "modeledValue": 1.064,
+          "currentValue": 6.625,
+          "variancePct": -83.93962264150943,
+          "stale": true,
+          "source": "Freddie Mac Multifamily Quote Sheet"
+        }
+      ],
+      "buyBoxVersion": "meridian-mf-vadd-q1-2026"
+    }
+  },
+  {
+    "key": "upside",
+    "label": "Upside — PBV rents at payment standard",
+    "errors": {},
+    "report": {
+      "inputs": {
+        "id": "eastgate-station-upside",
+        "dealName": "Eastgate Station",
+        "address": "100 NE 120th Ave, Portland, OR 97220",
+        "market": "Portland, OR",
+        "assetType": "multifamily",
+        "askingPrice": 3936580,
+        "units": 61,
+        "rehabBudget": 400000,
+        "closingCostPct": 2.5,
+        "ancillaryPct": 2,
+        "ltvPct": 72.83,
+        "ratePct": 1.064,
+        "amortYears": 30,
+        "currentRent": 1550,
+        "marketRent": 1600,
+        "vacancyPct": 6,
+        "opexRatioPct": 51.6,
+        "arv": 6900000
+      },
+      "refNo": "DDAR-2026-UPSIDE",
+      "generatedAt": 1794975350919,
+      "verdict": "STRONG ADVANTAGE",
+      "verdictLine": "Asymmetric entry — the underwrite clears every gate with margin to spare. Move fast, paper clean.",
+      "scores": {
+        "spread": 100,
+        "dscr": 100,
+        "cap": 100,
+        "coc": 100,
+        "total": 100
+      },
+      "confidence": 0.7938876978540793,
+      "m": {
+        "closingCosts": 98414.5,
+        "rehab": 400000,
+        "allIn": 4434994.5,
+        "equity": 1204988.0056500002,
+        "loan": 3230006.49435,
+        "pgi": 1134600,
+        "vacancyLoss": 68076,
+        "ancillary": 21330.48,
+        "egi": 1087854.48,
+        "opex": 561332.91168,
+        "noi": 526521.56832,
+        "monthlyPI": 10484.205058136333,
+        "ads": 125810.460697636,
+        "cashFlowAnnual": 400711.10762236395,
+        "cashFlowMonthly": 33392.59230186366,
+        "goingInCap": 11.87197793187793,
+        "stabNOI": 543506.13504,
+        "stabCap": 12.25494496193851,
+        "dscr": 4.18503807553336,
+        "coc": 33.2543648354583,
+        "mao70": 4430000,
+        "supportedOffer": 14096094.319829104,
+        "ceiling": 14096094.319829104,
+        "spread": 10159514.319829104,
+        "spreadPct": 258.07971182674055,
+        "pricePerUnit": 64534.098360655735,
+        "grm": 3.469575180680416,
+        "breakEvenOcc": 0.5937510778417513,
+        "rentGapPct": 3.225806451612903,
+        "ltc": 72.83
+      },
+      "offer": {
+        "opening": 12968407,
+        "target": 14096094,
+        "ceiling": 14096094,
+        "credits": 60000
+      },
+      "levers": [
+        {
+          "kind": "upside",
+          "title": "Below-ceiling entry",
+          "detail": "Asking basis sits 258.1% under the agent's max supportable ceiling — instant day-one equity if the number holds.",
+          "impact": "+$10.16M vs ceiling"
+        },
+        {
+          "kind": "upside",
+          "title": "Expense recapture",
+          "detail": "Opex ratio of 52% runs hot versus the 36–38% market band. RUBS, tax appeal and contract rebids are the usual levers.",
+          "impact": "≈$148K/yr at 38%"
+        },
+        {
+          "kind": "upside",
+          "title": "Ancillary income stack",
+          "detail": "Pet rent, storage, reserved parking and utility bill-back are under-penetrated at this basis.",
+          "impact": "+3–5% EGI"
+        }
+      ],
+      "matrix": [
+        [
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0,
+            "coc": 29.75875116394474,
+            "dscr": 3.8502350294906913
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.1,
+            "coc": 29.399425071164913,
+            "dscr": 3.8158194785487565
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.2,
+            "coc": 29.046465782912172,
+            "dscr": 3.782013727701895
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.3,
+            "coc": 28.699705567580423,
+            "dscr": 3.7488017119446697
+          }
+        ],
+        [
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0,
+            "coc": 31.506557999701524,
+            "dscr": 4.017636552512026
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.1,
+            "coc": 31.131609033322565,
+            "dscr": 3.9817246732682676
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.2,
+            "coc": 30.76330368905884,
+            "dscr": 3.9464491071671945
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.3,
+            "coc": 30.40146694262571,
+            "dscr": 3.911793090724873
+          }
+        ],
+        [
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0,
+            "coc": 33.2543648354583,
+            "dscr": 4.18503807553336
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.1,
+            "coc": 32.863792995480225,
+            "dscr": 4.147629867987779
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.2,
+            "coc": 32.4801415952055,
+            "dscr": 4.110884486632494
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.3,
+            "coc": 32.103228317671,
+            "dscr": 4.074784469505076
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0,
+            "coc": 35.00217167121507,
+            "dscr": 4.352439598554694
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.1,
+            "coc": 34.59597695763787,
+            "dscr": 4.313535062707289
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.2,
+            "coc": 34.19697950135217,
+            "dscr": 4.275319866097794
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.3,
+            "coc": 33.80498969271628,
+            "dscr": 4.2377758482852785
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0,
+            "coc": 36.749978506971864,
+            "dscr": 4.519841121576029
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.1,
+            "coc": 36.328160919795536,
+            "dscr": 4.479440257426801
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.2,
+            "coc": 35.91381740749885,
+            "dscr": 4.439755245563094
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.3,
+            "coc": 35.50675106776158,
+            "dscr": 4.400767227065482
+          }
+        ]
+      ],
+      "rentDeltas": [
+        -0.08,
+        -0.04,
+        0,
+        0.04,
+        0.08
+      ],
+      "rehabDeltas": [
+        0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "comps": [
+        {
+          "address": "2693 Vance Ct",
+          "distanceMi": 0.3,
+          "pricePerUnit": 66000,
+          "cap": 6.2,
+          "period": "Q3 25"
+        },
+        {
+          "address": "2692 Dockside Rd",
+          "distanceMi": 0.6,
+          "pricePerUnit": 70500,
+          "cap": 6,
+          "period": "Q4 25"
+        },
+        {
+          "address": "1658 Meridian Way",
+          "distanceMi": 1.2,
+          "pricePerUnit": 61000,
+          "cap": 5.1,
+          "period": "Q2 26"
+        },
+        {
+          "address": "2771 Harrow Ave",
+          "distanceMi": 1.8,
+          "pricePerUnit": 66000,
+          "cap": 6.1,
+          "period": "Q4 25"
+        }
+      ],
+      "narrative": [
+        "Eastgate Station at 100 NE 120th Ave, Portland, OR 97220 presents at $3.94M — $65K/door against a $66K/door comp set across Portland, OR. The agent's support ceiling lands at $14.10M, putting the ask 258.1% below the number the math can defend. ARV of $6.90M leaves $2.47M of value-add headroom against the $4.43M all-in basis.",
+        "In-place rents of $2K/mo run 3% under market. At 52% opex and 6% vacancy the asset throws $527K NOI going in (11.9% cap) and $544K stabilized (12.3%). On the proposed $3.23M senior facility at 1.06%, coverage prints at 4.19× DSCR and levered return at 33.3% cash-on-cash — $33K/mo to the sponsor.",
+        "Recommendation: move to LOI. Open at $12.97M, anchor on the comp set, and target $14.10M with $60K in closing/rehab credits. Hard ceiling $14.10M — beyond that the DSCR floor and sponsor return both fail the committee test."
+      ],
+      "verification": {
+        "primarySources": [
+          {
+            "name": "Offering Memorandum",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "Rent Roll",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "T-12 Operating Statements",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          }
+        ],
+        "externalChecks": [
+          {
+            "source": "County Assessor Records",
+            "url": "https://assessor.portland,.or.gov",
+            "checkedAt": "2026-11-18",
+            "result": "Parcel ID verified, ownership confirmed"
+          },
+          {
+            "source": "FEMA Flood Maps",
+            "url": "https://msc.fema.gov/portal",
+            "checkedAt": "2026-11-18",
+            "result": "No AE/VE zones detected"
+          },
+          {
+            "source": "CoStar Comp Scan",
+            "checkedAt": "2026-11-18",
+            "result": "4 arms-length comps within 2mi / 180-day window"
+          }
+        ],
+        "items": [
+          {
+            "item": "Document reconciliation sweep",
+            "status": "verified",
+            "source": "OM vs rent roll vs T-12",
+            "note": "All sources tie"
+          },
+          {
+            "item": "Unit count matches across OM, rent roll, T-12",
+            "status": "verified",
+            "source": "reconciliation sweep",
+            "note": "61 doors consistent"
+          },
+          {
+            "item": "Asking price",
+            "status": "verified",
+            "source": "LOI / broker email",
+            "note": "$3,936,580"
+          },
+          {
+            "item": "Market rent assumption",
+            "status": "flagged",
+            "source": "broker pro forma",
+            "note": "Underwritten at $1600/mo — verify against lease-up velocity"
+          },
+          {
+            "item": "Opex ratio",
+            "status": "verified",
+            "source": "T-12 actuals",
+            "note": "52% — within Sun Belt value-add band"
+          },
+          {
+            "item": "Interest rate assumption",
+            "status": "flagged",
+            "source": "agency quote sheet",
+            "note": "1.06% — current as of 2026-11-18, re-quote before LOI"
+          },
+          {
+            "item": "Rehab budget",
+            "status": "not_performed",
+            "source": "GC estimate pending",
+            "note": "$/door sanity check passed — detailed scope review required"
+          }
+        ],
+        "confidenceZones": [
+          {
+            "zone": "high",
+            "fields": [
+              "asking_price",
+              "unit_count",
+              "in_place_rents",
+              "opex_actuals"
+            ],
+            "reason": "Source documents agree; arithmetic reconciles"
+          },
+          {
+            "zone": "medium",
+            "fields": [
+              "market_rent",
+              "exit_cap",
+              "lease_up_velocity"
+            ],
+            "reason": "Broker pro forma — directionally sound but unverified by third party"
+          },
+          {
+            "zone": "low",
+            "fields": [
+              "rehab_budget",
+              "insurance_expense",
+              "tax_reassessment"
+            ],
+            "reason": "Requires GC walk, insurance quote, and assessor confirmation"
+          }
+        ],
+        "overallConfidence": 0.7938876978540793
+      },
+      "reconciliation": [
+        {
+          "field": "unit_count",
+          "omValue": 61,
+          "rentRollValue": 61,
+          "t12Value": 61,
+          "matches": true
+        },
+        {
+          "field": "asking_price",
+          "omValue": 3936580,
+          "rentRollValue": 3936580,
+          "t12Value": 3936580,
+          "matches": true
+        }
+      ],
+      "sponsor": {
+        "name": "Eastgate",
+        "notes": "Limited transaction history in subject market — enhanced diligence recommended"
+      },
+      "portfolioConcentration": [
+        {
+          "market": "Portland, OR",
+          "assetType": "multifamily",
+          "currentCount": 1,
+          "fundLimit": 5,
+          "withinLimit": true
+        },
+        {
+          "market": "All Markets",
+          "assetType": "multifamily",
+          "currentCount": 2,
+          "fundLimit": 8,
+          "withinLimit": true
+        }
+      ],
+      "assumptionFreshness": [
+        {
+          "assumption": "senior_debt_rate",
+          "modeledValue": 1.064,
+          "currentValue": 6.625,
+          "variancePct": -83.93962264150943,
+          "stale": true,
+          "source": "Freddie Mac Multifamily Quote Sheet"
+        }
+      ],
+      "buyBoxVersion": "meridian-mf-vadd-q1-2026"
+    }
+  },
+  {
+    "key": "taxable",
+    "label": "Base — for-profit buyer loses property tax exemption",
+    "errors": {
+      "opexRatioPct": "20–70%"
+    },
+    "report": {
+      "inputs": {
+        "id": "eastgate-station-taxable",
+        "dealName": "Eastgate Station",
+        "address": "100 NE 120th Ave, Portland, OR 97220",
+        "market": "Portland, OR",
+        "assetType": "multifamily",
+        "askingPrice": 3936580,
+        "units": 61,
+        "rehabBudget": 400000,
+        "closingCostPct": 2.5,
+        "ancillaryPct": 2,
+        "ltvPct": 72.83,
+        "ratePct": 1.064,
+        "amortYears": 30,
+        "currentRent": 1400,
+        "marketRent": 1480,
+        "vacancyPct": 8,
+        "opexRatioPct": 72.6,
+        "arv": 3500000
+      },
+      "refNo": "DDAR-2026-AXABLE",
+      "generatedAt": 1794975350919,
+      "verdict": "STRONG ADVANTAGE",
+      "verdictLine": "Asymmetric entry — the underwrite clears every gate with margin to spare. Move fast, paper clean.",
+      "scores": {
+        "spread": 100,
+        "dscr": 100,
+        "cap": 51,
+        "coc": 100,
+        "total": 88
+      },
+      "confidence": 0.8262001074571163,
+      "m": {
+        "closingCosts": 98414.5,
+        "rehab": 400000,
+        "allIn": 4434994.5,
+        "equity": 1204988.0056500002,
+        "loan": 3230006.49435,
+        "pgi": 1024800,
+        "vacancyLoss": 81984,
+        "ancillary": 18856.32,
+        "egi": 961672.32,
+        "opex": 698174.1043199999,
+        "noi": 263498.21568,
+        "monthlyPI": 10484.205058136333,
+        "ads": 125810.460697636,
+        "cashFlowAnnual": 137687.75498236401,
+        "cashFlowMonthly": 11473.979581863668,
+        "goingInCap": 5.94134255814748,
+        "stabNOI": 278555.2565760001,
+        "stabCap": 6.28084784718448,
+        "dscr": 2.094406253811224,
+        "coc": 11.426483445210051,
+        "mao70": 2050000,
+        "supportedOffer": 6859457.729887519,
+        "ceiling": 6859457.729887519,
+        "spread": 2922877.729887519,
+        "spreadPct": 74.24916373825806,
+        "pricePerUnit": 64534.098360655735,
+        "grm": 3.8413153786104606,
+        "breakEvenOcc": 0.7882786933247959,
+        "rentGapPct": 5.714285714285714,
+        "ltc": 72.83
+      },
+      "offer": {
+        "opening": 6310701,
+        "target": 6859458,
+        "ceiling": 6859458,
+        "credits": 60000
+      },
+      "levers": [
+        {
+          "kind": "upside",
+          "title": "Below-ceiling entry",
+          "detail": "Asking basis sits 74.2% under the agent's max supportable ceiling — instant day-one equity if the number holds.",
+          "impact": "+$2.92M vs ceiling"
+        },
+        {
+          "kind": "upside",
+          "title": "Expense recapture",
+          "detail": "Opex ratio of 73% runs hot versus the 36–38% market band. RUBS, tax appeal and contract rebids are the usual levers.",
+          "impact": "≈$333K/yr at 38%"
+        },
+        {
+          "kind": "upside",
+          "title": "Ancillary income stack",
+          "detail": "Pet rent, storage, reserved parking and utility bill-back are under-penetrated at this basis.",
+          "impact": "+3–5% EGI"
+        },
+        {
+          "kind": "execution",
+          "title": "Light value-add scope",
+          "detail": "Rehab lands at $7K/door — cosmetic scope only, no structural or deferred-system risk priced in.",
+          "impact": "$7K/door"
+        },
+        {
+          "kind": "risk",
+          "title": "High break-even occupancy",
+          "detail": "Debt service is covered only above 79% occupancy. A soft leasing season eats cash flow fast.",
+          "impact": "BE 79%"
+        }
+      ],
+      "matrix": [
+        [
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0,
+            "coc": 9.677100284916348,
+            "dscr": 1.9268537535063257
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.1,
+            "coc": 9.497275202732425,
+            "dscr": 1.9096304585636719
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.2,
+            "coc": 9.320636393881662,
+            "dscr": 1.8927123386539917
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.3,
+            "coc": 9.147099916923523,
+            "dscr": 1.8760913540301554
+          }
+        ],
+        [
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0,
+            "coc": 10.551791865063205,
+            "dscr": 2.0106300036587754
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.1,
+            "coc": 10.364148301045198,
+            "dscr": 1.9926578698055712
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.2,
+            "coc": 10.179829543983532,
+            "dscr": 1.9750041794650355
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.3,
+            "coc": 9.99874800280982,
+            "dscr": 1.957660543335815
+          }
+        ],
+        [
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0,
+            "coc": 11.426483445210051,
+            "dscr": 2.094406253811224
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.1,
+            "coc": 11.23102139935796,
+            "dscr": 2.0756852810474697
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.2,
+            "coc": 11.039022694085393,
+            "dscr": 2.057296020276078
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.3,
+            "coc": 10.85039608869611,
+            "dscr": 2.0392297326414734
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0,
+            "coc": 12.301175025356896,
+            "dscr": 2.1781825039636726
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.1,
+            "coc": 12.097894497670723,
+            "dscr": 2.158712692289368
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.2,
+            "coc": 11.898215844187252,
+            "dscr": 2.139587861087121
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.3,
+            "coc": 11.702044174582399,
+            "dscr": 2.120798921947132
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0,
+            "coc": 13.175866605503764,
+            "dscr": 2.2619587541161232
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.1,
+            "coc": 12.964767595983506,
+            "dscr": 2.2417401035312685
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.2,
+            "coc": 12.757408994289133,
+            "dscr": 2.2218797018981657
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.3,
+            "coc": 12.553692260468708,
+            "dscr": 2.2023681112527926
+          }
+        ]
+      ],
+      "rentDeltas": [
+        -0.08,
+        -0.04,
+        0,
+        0.04,
+        0.08
+      ],
+      "rehabDeltas": [
+        0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "comps": [
+        {
+          "address": "1033 Bellview Dr",
+          "distanceMi": 0.3,
+          "pricePerUnit": 66500,
+          "cap": 5.3,
+          "period": "Q2 26"
+        },
+        {
+          "address": "898 Kessler Blvd",
+          "distanceMi": 0.4,
+          "pricePerUnit": 58500,
+          "cap": 5.2,
+          "period": "Q1 26"
+        },
+        {
+          "address": "1821 Quarry Ln",
+          "distanceMi": 1.1,
+          "pricePerUnit": 72000,
+          "cap": 5.6,
+          "period": "Q3 25"
+        },
+        {
+          "address": "1379 Kessler Blvd",
+          "distanceMi": 1.4,
+          "pricePerUnit": 63500,
+          "cap": 6.3,
+          "period": "Q4 25"
+        }
+      ],
+      "narrative": [
+        "Eastgate Station at 100 NE 120th Ave, Portland, OR 97220 presents at $3.94M — $65K/door against a $65K/door comp set across Portland, OR. The agent's support ceiling lands at $6.86M, putting the ask 74.2% below the number the math can defend. ARV of $3.50M sits under the all-in basis — the plan must create value, not just capture it.",
+        "In-place rents of $1K/mo run 6% under market. At 73% opex and 8% vacancy the asset throws $263K NOI going in (5.9% cap) and $279K stabilized (6.3%). On the proposed $3.23M senior facility at 1.06%, coverage prints at 2.09× DSCR and levered return at 11.4% cash-on-cash — $11K/mo to the sponsor.",
+        "Recommendation: move to LOI. Open at $6.31M, anchor on the comp set, and target $6.86M with $60K in closing/rehab credits. Hard ceiling $6.86M — beyond that the DSCR floor and sponsor return both fail the committee test."
+      ],
+      "verification": {
+        "primarySources": [
+          {
+            "name": "Offering Memorandum",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "Rent Roll",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "T-12 Operating Statements",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          }
+        ],
+        "externalChecks": [
+          {
+            "source": "County Assessor Records",
+            "url": "https://assessor.portland,.or.gov",
+            "checkedAt": "2026-11-18",
+            "result": "Parcel ID verified, ownership confirmed"
+          },
+          {
+            "source": "FEMA Flood Maps",
+            "url": "https://msc.fema.gov/portal",
+            "checkedAt": "2026-11-18",
+            "result": "No AE/VE zones detected"
+          },
+          {
+            "source": "CoStar Comp Scan",
+            "checkedAt": "2026-11-18",
+            "result": "4 arms-length comps within 2mi / 180-day window"
+          }
+        ],
+        "items": [
+          {
+            "item": "Document reconciliation sweep",
+            "status": "verified",
+            "source": "OM vs rent roll vs T-12",
+            "note": "All sources tie"
+          },
+          {
+            "item": "Unit count matches across OM, rent roll, T-12",
+            "status": "verified",
+            "source": "reconciliation sweep",
+            "note": "61 doors consistent"
+          },
+          {
+            "item": "Asking price",
+            "status": "verified",
+            "source": "LOI / broker email",
+            "note": "$3,936,580"
+          },
+          {
+            "item": "Market rent assumption",
+            "status": "flagged",
+            "source": "broker pro forma",
+            "note": "Underwritten at $1480/mo — verify against lease-up velocity"
+          },
+          {
+            "item": "Opex ratio",
+            "status": "verified",
+            "source": "T-12 actuals",
+            "note": "73% — within Sun Belt value-add band"
+          },
+          {
+            "item": "Interest rate assumption",
+            "status": "flagged",
+            "source": "agency quote sheet",
+            "note": "1.06% — current as of 2026-11-18, re-quote before LOI"
+          },
+          {
+            "item": "Rehab budget",
+            "status": "not_performed",
+            "source": "GC estimate pending",
+            "note": "$/door sanity check passed — detailed scope review required"
+          }
+        ],
+        "confidenceZones": [
+          {
+            "zone": "high",
+            "fields": [
+              "asking_price",
+              "unit_count",
+              "in_place_rents",
+              "opex_actuals"
+            ],
+            "reason": "Source documents agree; arithmetic reconciles"
+          },
+          {
+            "zone": "medium",
+            "fields": [
+              "market_rent",
+              "exit_cap",
+              "lease_up_velocity"
+            ],
+            "reason": "Broker pro forma — directionally sound but unverified by third party"
+          },
+          {
+            "zone": "low",
+            "fields": [
+              "rehab_budget",
+              "insurance_expense",
+              "tax_reassessment"
+            ],
+            "reason": "Requires GC walk, insurance quote, and assessor confirmation"
+          }
+        ],
+        "overallConfidence": 0.8262001074571163
+      },
+      "reconciliation": [
+        {
+          "field": "unit_count",
+          "omValue": 61,
+          "rentRollValue": 61,
+          "t12Value": 61,
+          "matches": true
+        },
+        {
+          "field": "asking_price",
+          "omValue": 3936580,
+          "rentRollValue": 3936580,
+          "t12Value": 3936580,
+          "matches": true
+        }
+      ],
+      "sponsor": {
+        "name": "Eastgate",
+        "notes": "Limited transaction history in subject market — enhanced diligence recommended"
+      },
+      "portfolioConcentration": [
+        {
+          "market": "Portland, OR",
+          "assetType": "multifamily",
+          "currentCount": 1,
+          "fundLimit": 5,
+          "withinLimit": true
+        },
+        {
+          "market": "All Markets",
+          "assetType": "multifamily",
+          "currentCount": 2,
+          "fundLimit": 8,
+          "withinLimit": true
+        }
+      ],
+      "assumptionFreshness": [
+        {
+          "assumption": "senior_debt_rate",
+          "modeledValue": 1.064,
+          "currentValue": 6.625,
+          "variancePct": -83.93962264150943,
+          "stale": true,
+          "source": "Freddie Mac Multifamily Quote Sheet"
+        }
+      ],
+      "buyBoxVersion": "meridian-mf-vadd-q1-2026"
+    }
+  },
+  {
+    "key": "conventional",
+    "label": "Counterfactual — conventional debt, no assumption",
+    "errors": {},
+    "report": {
+      "inputs": {
+        "id": "eastgate-station-conventional",
+        "dealName": "Eastgate Station",
+        "address": "100 NE 120th Ave, Portland, OR 97220",
+        "market": "Portland, OR",
+        "assetType": "multifamily",
+        "askingPrice": 3936580,
+        "units": 61,
+        "rehabBudget": 400000,
+        "closingCostPct": 2.5,
+        "ancillaryPct": 2,
+        "ltvPct": 65,
+        "ratePct": 6.625,
+        "amortYears": 30,
+        "currentRent": 1400,
+        "marketRent": 1480,
+        "vacancyPct": 8,
+        "opexRatioPct": 62.2,
+        "arv": 4850000
+      },
+      "refNo": "DDAR-2026-TIONAL",
+      "generatedAt": 1794975350919,
+      "verdict": "STRONG ADVANTAGE",
+      "verdictLine": "Asymmetric entry — the underwrite clears every gate with margin to spare. Move fast, paper clean.",
+      "scores": {
+        "spread": 100,
+        "dscr": 100,
+        "cap": 100,
+        "coc": 93,
+        "total": 99
+      },
+      "confidence": 0.8499484153767116,
+      "m": {
+        "closingCosts": 98414.5,
+        "rehab": 400000,
+        "allIn": 4434994.5,
+        "equity": 1552248.0750000002,
+        "loan": 2882746.425,
+        "pgi": 1024800,
+        "vacancyLoss": 81984,
+        "ancillary": 18856.32,
+        "egi": 961672.32,
+        "opex": 598160.18304,
+        "noi": 363512.1369599999,
+        "monthlyPI": 18458.54133927609,
+        "ads": 221502.49607131307,
+        "cashFlowAnnual": 142009.64088868684,
+        "cashFlowMonthly": 11834.136740723903,
+        "goingInCap": 8.196450682407834,
+        "stabNOI": 384284.25907200004,
+        "stabCap": 8.664819292831142,
+        "dscr": 1.6411198221575192,
+        "coc": 9.148643388634051,
+        "mao70": 2995000,
+        "supportedOffer": 5290425.276183084,
+        "ceiling": 5290425.276183084,
+        "spread": 1353845.2761830837,
+        "spreadPct": 34.39140767323625,
+        "pricePerUnit": 64534.098360655735,
+        "grm": 3.8413153786104606,
+        "breakEvenOcc": 0.7841440884795436,
+        "rentGapPct": 5.714285714285714,
+        "ltc": 65
+      },
+      "offer": {
+        "opening": 4867191,
+        "target": 5290425,
+        "ceiling": 5290425,
+        "credits": 60000
+      },
+      "levers": [
+        {
+          "kind": "upside",
+          "title": "Below-ceiling entry",
+          "detail": "Asking basis sits 34.4% under the agent's max supportable ceiling — instant day-one equity if the number holds.",
+          "impact": "+$1.35M vs ceiling"
+        },
+        {
+          "kind": "upside",
+          "title": "Expense recapture",
+          "detail": "Opex ratio of 62% runs hot versus the 36–38% market band. RUBS, tax appeal and contract rebids are the usual levers.",
+          "impact": "≈$233K/yr at 38%"
+        },
+        {
+          "kind": "upside",
+          "title": "Ancillary income stack",
+          "detail": "Pet rent, storage, reserved parking and utility bill-back are under-penetrated at this basis.",
+          "impact": "+3–5% EGI"
+        },
+        {
+          "kind": "execution",
+          "title": "Light value-add scope",
+          "detail": "Rehab lands at $7K/door — cosmetic scope only, no structural or deferred-system risk priced in.",
+          "impact": "$7K/door"
+        },
+        {
+          "kind": "risk",
+          "title": "High break-even occupancy",
+          "detail": "Debt service is covered only above 78% occupancy. A soft leasing season eats cash flow fast.",
+          "impact": "BE 78%"
+        }
+      ],
+      "matrix": [
+        [
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0,
+            "coc": 7.275168946940837,
+            "dscr": 1.509830236384918
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.1,
+            "coc": 7.082588097248421,
+            "dscr": 1.496334530534241
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.2,
+            "coc": 6.8934195369785956,
+            "dscr": 1.4830779515458572
+          },
+          {
+            "rentDelta": -0.08,
+            "rehabDelta": 0.3,
+            "coc": 6.70757337036294,
+            "dscr": 1.470054199692406
+          }
+        ],
+        [
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0,
+            "coc": 8.211906167787447,
+            "dscr": 1.575475029271219
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.1,
+            "coc": 8.010952237673623,
+            "dscr": 1.5613925536009472
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.2,
+            "coc": 7.813558957392066,
+            "dscr": 1.5475596016130684
+          },
+          {
+            "rentDelta": -0.04,
+            "rehabDelta": 0.3,
+            "coc": 7.619632522662687,
+            "dscr": 1.5339695996790323
+          }
+        ],
+        [
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0,
+            "coc": 9.148643388634051,
+            "dscr": 1.6411198221575192
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.1,
+            "coc": 8.939316378098818,
+            "dscr": 1.626450576667653
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.2,
+            "coc": 8.733698377805528,
+            "dscr": 1.6120412516802791
+          },
+          {
+            "rentDelta": 0,
+            "rehabDelta": 0.3,
+            "coc": 8.531691674962424,
+            "dscr": 1.5978849996656583
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0,
+            "coc": 10.085380609480662,
+            "dscr": 1.70676461504382
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.1,
+            "coc": 9.867680518524018,
+            "dscr": 1.6915085997343593
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.2,
+            "coc": 9.653837798219,
+            "dscr": 1.6765229017474903
+          },
+          {
+            "rentDelta": 0.04,
+            "rehabDelta": 0.3,
+            "coc": 9.443750827262171,
+            "dscr": 1.6618003996522848
+          }
+        ],
+        [
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0,
+            "coc": 11.022117830327273,
+            "dscr": 1.772409407930121
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.1,
+            "coc": 10.79604465894922,
+            "dscr": 1.7565666228010655
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.2,
+            "coc": 10.573977218632468,
+            "dscr": 1.7410045518147017
+          },
+          {
+            "rentDelta": 0.08,
+            "rehabDelta": 0.3,
+            "coc": 10.355809979561917,
+            "dscr": 1.7257157996389112
+          }
+        ]
+      ],
+      "rentDeltas": [
+        -0.08,
+        -0.04,
+        0,
+        0.04,
+        0.08
+      ],
+      "rehabDeltas": [
+        0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "comps": [
+        {
+          "address": "2584 Bellview Dr",
+          "distanceMi": 1,
+          "pricePerUnit": 65500,
+          "cap": 6.2,
+          "period": "Q1 26"
+        },
+        {
+          "address": "511 Bellview Dr",
+          "distanceMi": 1.3,
+          "pricePerUnit": 63500,
+          "cap": 5.9,
+          "period": "Q4 25"
+        },
+        {
+          "address": "2347 Harrow Ave",
+          "distanceMi": 1.4,
+          "pricePerUnit": 65500,
+          "cap": 5,
+          "period": "Q2 26"
+        },
+        {
+          "address": "1286 Meridian Way",
+          "distanceMi": 1.4,
+          "pricePerUnit": 65000,
+          "cap": 6.1,
+          "period": "Q3 25"
+        }
+      ],
+      "narrative": [
+        "Eastgate Station at 100 NE 120th Ave, Portland, OR 97220 presents at $3.94M — $65K/door against a $65K/door comp set across Portland, OR. The agent's support ceiling lands at $5.29M, putting the ask 34.4% below the number the math can defend. ARV of $4.85M leaves $415K of value-add headroom against the $4.43M all-in basis.",
+        "In-place rents of $1K/mo run 6% under market. At 62% opex and 8% vacancy the asset throws $364K NOI going in (8.2% cap) and $384K stabilized (8.7%). On the proposed $2.88M senior facility at 6.63%, coverage prints at 1.64× DSCR and levered return at 9.1% cash-on-cash — $12K/mo to the sponsor.",
+        "Recommendation: move to LOI. Open at $4.87M, anchor on the comp set, and target $5.29M with $60K in closing/rehab credits. Hard ceiling $5.29M — beyond that the DSCR floor and sponsor return both fail the committee test."
+      ],
+      "verification": {
+        "primarySources": [
+          {
+            "name": "Offering Memorandum",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "Rent Roll",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          },
+          {
+            "name": "T-12 Operating Statements",
+            "type": "broker_provided",
+            "receivedAt": "2026-11-18"
+          }
+        ],
+        "externalChecks": [
+          {
+            "source": "County Assessor Records",
+            "url": "https://assessor.portland,.or.gov",
+            "checkedAt": "2026-11-18",
+            "result": "Parcel ID verified, ownership confirmed"
+          },
+          {
+            "source": "FEMA Flood Maps",
+            "url": "https://msc.fema.gov/portal",
+            "checkedAt": "2026-11-18",
+            "result": "No AE/VE zones detected"
+          },
+          {
+            "source": "CoStar Comp Scan",
+            "checkedAt": "2026-11-18",
+            "result": "4 arms-length comps within 2mi / 180-day window"
+          }
+        ],
+        "items": [
+          {
+            "item": "Document reconciliation sweep",
+            "status": "verified",
+            "source": "OM vs rent roll vs T-12",
+            "note": "All sources tie"
+          },
+          {
+            "item": "Unit count matches across OM, rent roll, T-12",
+            "status": "verified",
+            "source": "reconciliation sweep",
+            "note": "61 doors consistent"
+          },
+          {
+            "item": "Asking price",
+            "status": "verified",
+            "source": "LOI / broker email",
+            "note": "$3,936,580"
+          },
+          {
+            "item": "Market rent assumption",
+            "status": "flagged",
+            "source": "broker pro forma",
+            "note": "Underwritten at $1480/mo — verify against lease-up velocity"
+          },
+          {
+            "item": "Opex ratio",
+            "status": "verified",
+            "source": "T-12 actuals",
+            "note": "62% — within Sun Belt value-add band"
+          },
+          {
+            "item": "Interest rate assumption",
+            "status": "flagged",
+            "source": "agency quote sheet",
+            "note": "6.63% — current as of 2026-11-18, re-quote before LOI"
+          },
+          {
+            "item": "Rehab budget",
+            "status": "not_performed",
+            "source": "GC estimate pending",
+            "note": "$/door sanity check passed — detailed scope review required"
+          }
+        ],
+        "confidenceZones": [
+          {
+            "zone": "high",
+            "fields": [
+              "asking_price",
+              "unit_count",
+              "in_place_rents",
+              "opex_actuals"
+            ],
+            "reason": "Source documents agree; arithmetic reconciles"
+          },
+          {
+            "zone": "medium",
+            "fields": [
+              "market_rent",
+              "exit_cap",
+              "lease_up_velocity"
+            ],
+            "reason": "Broker pro forma — directionally sound but unverified by third party"
+          },
+          {
+            "zone": "low",
+            "fields": [
+              "rehab_budget",
+              "insurance_expense",
+              "tax_reassessment"
+            ],
+            "reason": "Requires GC walk, insurance quote, and assessor confirmation"
+          }
+        ],
+        "overallConfidence": 0.8499484153767116
+      },
+      "reconciliation": [
+        {
+          "field": "unit_count",
+          "omValue": 61,
+          "rentRollValue": 61,
+          "t12Value": 61,
+          "matches": true
+        },
+        {
+          "field": "asking_price",
+          "omValue": 3936580,
+          "rentRollValue": 3936580,
+          "t12Value": 3936580,
+          "matches": true
+        }
+      ],
+      "sponsor": {
+        "name": "Eastgate",
+        "notes": "Limited transaction history in subject market — enhanced diligence recommended"
+      },
+      "portfolioConcentration": [
+        {
+          "market": "Portland, OR",
+          "assetType": "multifamily",
+          "currentCount": 1,
+          "fundLimit": 5,
+          "withinLimit": true
+        },
+        {
+          "market": "All Markets",
+          "assetType": "multifamily",
+          "currentCount": 2,
+          "fundLimit": 8,
+          "withinLimit": true
+        }
+      ],
+      "assumptionFreshness": [
+        {
+          "assumption": "senior_debt_rate",
+          "modeledValue": 6.625,
+          "currentValue": 6.625,
+          "variancePct": 0,
+          "stale": false,
+          "source": "Freddie Mac Multifamily Quote Sheet"
+        }
+      ],
+      "buyBoxVersion": "meridian-mf-vadd-q1-2026"
+    }
+  }
+]

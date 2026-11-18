@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "report": "esbuild scripts/run-report.ts --bundle --platform=node --format=esm --outfile=.acq-cache/run-report.mjs --log-level=warning && node .acq-cache/run-report.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",

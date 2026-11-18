@@ -87,7 +87,31 @@ const route9: DealInputs = {
   amortYears: 25,
 };
 
+const eastgateStation: DealInputs = {
+  id: "eastgate-station",
+  dealName: "Eastgate Station",
+  address: "100 NE 120th Ave, Portland, OR 97220",
+  market: "Portland, OR",
+  assetType: "multifamily",
+  // 61-unit LIHTC community (2010). Ask = assumed PHB ($1.98M @ 0%) + NOAH ($1.25M @ 2.75%) debt + ~$700K cash.
+  // Debt modeled as assumed balances: LTC 72.83% of all-in at a 1.064% blended rate. ARV = restricted value at 7.5% cap.
+  askingPrice: 3_936_580,
+  arv: 4_850_000,
+  rehabBudget: 400_000,
+  units: 61,
+  currentRent: 1400,
+  marketRent: 1480,
+  vacancyPct: 8,
+  opexRatioPct: 62.2,
+  ancillaryPct: 2,
+  closingCostPct: 2.5,
+  ltvPct: 72.83,
+  ratePct: 1.064,
+  amortYears: 30,
+};
+
 export const SAMPLE_DEALS: PipelineDeal[] = [
+  { id: "eastgate-station", status: "underwritten", updatedAt: now, inputs: eastgateStation },
   { id: "foundry-lofts", status: "underwritten", updatedAt: now - 2 * DAY, inputs: foundryLofts },
   { id: "maple-row", status: "negotiation", updatedAt: now - 5 * DAY, inputs: mapleRow },
   { id: "cedar-bend", status: "underwritten", updatedAt: now - 9 * DAY, inputs: cedarBend },
